@@ -1,0 +1,188 @@
+/* ───────────── root header ───────────── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: var(--shadow-light);
+  transition: box-shadow var(--transition-medium);
+}
+.header.scrolled {
+  box-shadow: var(--shadow-heavy);
+}
+
+/* ───────────── shared containers ───────────── */
+.topContainer,
+.mainBar {
+  max-width: "90%";
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* ───────────── top bar ───────────── */
+.topBar {
+  font-size: 0.9rem;
+}
+.topContainer {
+  justify-content: flex-end;
+  gap: 2rem;
+  padding: 0.4rem 2rem;
+}
+.topLink {
+  display: flex;
+  align-items: center;
+  color: var(--primary-green);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-medium);
+}
+.topLink:hover {
+  color: var(--soft-gold);
+}
+.iconCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--primary-green);
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+
+/* ───────────── main bar ───────────── */
+.mainBar {
+  height: 74px;
+  padding: 0 2rem;
+}
+.logo {
+  font-size: 3.9rem;
+  /* font-weight: 700;*/
+  margin-bottom: 2.7rem;
+  margin-left: 2rem;
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: color var(--transition-medium);
+}
+.logoText {
+  font-family: var(--font-display);
+}
+
+/* nav links */
+.nav {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto; /* pushes nav & actions to the right */
+}
+.navLink {
+  position: relative;
+  color: var(--primary-green);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color var(--transition-medium);
+}
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--gold);
+  transition: width var(--transition-medium);
+}
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* CTA + burger */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 1.5rem; /* small gap from nav links */
+}
+.ctaButton {
+  background: var(--gold);
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0; /* square */
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  transition: all var(--transition-medium);
+}
+.ctaButton:hover {
+  background: var(--soft-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* hamburger */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 25px;
+}
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background: var(--primary-green);
+  transition: all var(--transition-medium);
+}
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ───────────── mobile tweaks ───────────── */
+@media (max-width: 768px) {
+  .topBar {
+    display: none; /* hide phone/email on mobile */
+  }
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    flex-direction: column;
+    justify-content: center;
+    transition: right var(--transition-medium);
+    backdrop-filter: blur(10px);
+  }
+  .navOpen {
+    right: 0;
+  }
+  .navLink {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .ctaButton {
+    display: none; /* optional: hide CTA on small screens */
+  }
+  .menuToggle {
+    display: block;
+  }
+}
