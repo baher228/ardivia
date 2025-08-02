@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Viterra Website - Additional Pages
 
-## Getting Started
+This project extends the Viterra website with additional pages to provide a complete user experience.
 
-First, run the development server:
+## New Pages Created
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. Services Page (`/services`)
+
+- Comprehensive overview of all services offered
+- Reuses the existing ServicesSection component
+- Includes a design process section
+- Features the FAQ section for common questions
+
+### 2. Projects Page (`/projects`)
+
+- Portfolio of completed projects
+- Filterable by project type (Residential, Commercial, Education, Public Realm)
+- Uses SectionCard components for consistent styling
+- Includes project descriptions and categories
+
+### 3. Contact Page (`/contact`)
+
+- Contact information for both studios (Alton and London)
+- Contact form for user inquiries
+- Social media links
+- Responsive design for all device sizes
+
+### 4. Privacy Policy Page (`/privacy`)
+
+- Comprehensive privacy policy
+- Explains data collection and usage
+- Complies with privacy regulations
+- Professional legal language
+
+### 5. Terms of Service Page (`/terms`)
+
+- Terms of service for website usage
+- User responsibilities and restrictions
+- Intellectual property information
+- Limitation of liability clauses
+
+### 6. 404 Page (`/not-found`)
+
+- Custom 404 error page
+- Links back to home and projects pages
+- Consistent styling with the rest of the site
+
+### 7. Sitemap (`/sitemap.xml`)
+
+- Dynamic sitemap generation
+- Includes all static pages
+- Proper XML formatting for SEO
+
+### 8. Robots.txt (`/robots.txt`)
+
+- Standard robots.txt file
+- Allows all crawling
+- References the sitemap
+
+## SEO Improvements
+
+### Metadata Updates
+
+- Enhanced description in layout metadata
+- Consistent page titles across all pages
+
+### Footer Links
+
+- Added links to new pages in footer
+- Improved site navigation
+
+## Technical Implementation
+
+### Consistent Styling
+
+- All new pages follow the existing design patterns
+- Responsive layouts for all screen sizes
+- Reuse of existing components where possible
+- Consistent typography and color scheme
+
+### Performance
+
+- Server-side rendering with Next.js
+- Optimized for fast loading
+- Minimal JavaScript usage
+
+### Accessibility
+
+- Semantic HTML structure
+- Proper heading hierarchy
+- ARIA labels where appropriate
+
+## File Structure
+
+```
+src/
+├── app/
+│   ├── services/
+│   │   └── page.tsx
+│   ├── projects/
+│   │   └── page.tsx
+│   ├── contact/
+│   │   └── page.tsx
+│   ├── privacy/
+│   │   └── page.tsx
+│   ├── terms/
+│   │   └── page.tsx
+│   ├── sitemap.xml/
+│   │   └── route.ts
+│   ├── robots.txt/
+│   │   └── route.ts
+│   └── not-found.tsx
+├── components/
+│   └── (existing components)
+└── pages/
+    └── (existing pages)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A test page has been created at `/test-pages` to verify all new pages are working correctly.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Maintenance
 
-## Learn More
+All pages are built with maintainability in mind:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Consistent code structure
+- Clear component separation
+- Well-documented styling
+- Easy to update content

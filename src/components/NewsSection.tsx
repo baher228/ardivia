@@ -1,5 +1,5 @@
-import React from 'react';
-import SectionCard from './SectionCard';
+import React from "react";
+import SectionCard from "./SectionCard";
 
 interface NewsItem {
   imageSrc: string;
@@ -12,26 +12,31 @@ interface NewsItem {
 const NewsSection: React.FC = () => {
   const newsItems: NewsItem[] = [
     {
-      imageSrc: 'https://fabrikuk.com/wp-content/uploads/2025/04/meeting-594091_1920-10x7.jpg',
-      title: 'See you at UKREIIF!',
-      category: 'news',
-      link: '/news/see-you-at-ukreiif',
-      description: 'viterra are looking forward to attending this years\' conference'
+      imageSrc:
+        "https://fabrikuk.com/wp-content/uploads/2025/04/meeting-594091_1920-10x7.jpg",
+      title: "See you at UKREIIF!",
+      category: "news",
+      link: "/news/see-you-at-ukreiif",
+      description:
+        "viterra are looking forward to attending this years' conference",
     },
     {
-      imageSrc: 'https://fabrikuk.com/wp-content/uploads/2025/04/FCB-studios_Rotherhithe-Primary-School_London_©HuftonCrow_021-FCBS_WEB-10x5.jpg',
-      title: 'A school in a garden',
-      category: 'celebrate',
-      link: '/news/a-school-in-a-garden',
-      description: 'Rotherhithe Primary School wins Civic Trust Award'
+      imageSrc:
+        "https://fabrikuk.com/wp-content/uploads/2025/04/FCB-studios_Rotherhithe-Primary-School_London_©HuftonCrow_021-FCBS_WEB-10x5.jpg",
+      title: "A school in a garden",
+      category: "celebrate",
+      link: "/news/a-school-in-a-garden",
+      description: "Rotherhithe Primary School wins Civic Trust Award",
     },
     {
-      imageSrc: 'https://fabrikuk.com/wp-content/uploads/2025/04/D2977_Park-01_lr-10x6.jpg',
-      title: 'Setting the benchmark',
-      category: 'celebrate',
-      link: '/news/setting-the-benchmark',
-      description: 'Gascoigne West Phase 2 wins Place of the Year for the second year in a row'
-    }
+      imageSrc:
+        "https://fabrikuk.com/wp-content/uploads/2025/04/D2977_Park-01_lr-10x6.jpg",
+      title: "Setting the benchmark",
+      category: "celebrate",
+      link: "/news/setting-the-benchmark",
+      description:
+        "Gascoigne West Phase 2 wins Place of the Year for the second year in a row",
+    },
   ];
 
   return (
@@ -43,7 +48,7 @@ const NewsSection: React.FC = () => {
             view all news →
           </a>
         </div>
-        
+
         <div style={newsGridStyles}>
           {newsItems.map((item, index) => (
             <div key={index} style={newsItemStyles}>
@@ -63,42 +68,42 @@ const NewsSection: React.FC = () => {
 };
 
 const newsSectionStyles: React.CSSProperties = {
-  padding: '4rem 0',
-  backgroundColor: '#fff',
+  padding: "4rem 0",
+  backgroundColor: "#fff",
 };
 
 const containerStyles: React.CSSProperties = {
-  maxWidth: '1200px',
-  margin: '0 auto',
-  padding: '0 2rem',
+  maxWidth: "1200px",
+  margin: "0 auto",
+  padding: "0 2rem",
 };
 
 const headerStyles: React.CSSProperties = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: '3rem',
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "3rem",
 };
 
 const titleStyles: React.CSSProperties = {
-  fontSize: '2.5rem',
-  fontWeight: '400',
-  color: '#000',
+  fontSize: "2.5rem",
+  fontWeight: "400",
+  color: "#000",
   margin: 0,
 };
 
 const viewAllLinkStyles: React.CSSProperties = {
-  fontSize: '0.9rem',
-  color: '#666',
-  textDecoration: 'none',
-  fontWeight: '500',
-  transition: 'color 0.3s ease',
+  fontSize: "0.9rem",
+  color: "#666",
+  textDecoration: "none",
+  fontWeight: "500",
+  transition: "color 0.3s ease",
 };
 
 const newsGridStyles: React.CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-  gap: '2rem',
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+  gap: "2rem",
 };
 
 const newsItemStyles: React.CSSProperties = {

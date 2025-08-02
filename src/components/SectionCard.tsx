@@ -8,7 +8,6 @@ interface SectionCardProps {
   title: string;
   subtitle?: string;
   link: string;
-  category?: string;
 }
 
 const SectionCard: React.FC<SectionCardProps> = ({
@@ -16,7 +15,6 @@ const SectionCard: React.FC<SectionCardProps> = ({
   title,
   subtitle,
   link,
-  category,
 }) => {
   return (
     <div style={cardStyles}>
@@ -37,7 +35,6 @@ const SectionCard: React.FC<SectionCardProps> = ({
           />
         </div>
         <div style={contentStyles}>
-          {category && <span style={categoryStyles}>[{category}]</span>}
           {subtitle && <p style={subtitleStyles}>{subtitle}</p>}
           <h3 style={titleStyles}>{title}</h3>
         </div>
@@ -47,8 +44,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
 };
 
 const cardStyles: React.CSSProperties = {
-  backgroundColor: "#fff",
-  borderRadius: "8px",
+  backgroundColor: "transparent",
   overflow: "hidden",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   cursor: "pointer",
@@ -78,29 +74,21 @@ const imageStyles: React.CSSProperties = {
 };
 
 const contentStyles: React.CSSProperties = {
-  padding: "1.5rem",
-};
-
-const categoryStyles: React.CSSProperties = {
-  fontSize: "0.8rem",
-  color: "#666",
-  fontStyle: "italic",
-  marginBottom: "0.5rem",
-  display: "block",
+  padding: "1rem 0",
 };
 
 const subtitleStyles: React.CSSProperties = {
-  fontSize: "0.9rem",
+  fontSize: "14px",
   color: "#666",
-  marginBottom: "0.5rem",
-  fontWeight: "400",
+  marginBottom: "0.25rem",
+  fontWeight: 400,
 };
 
 const titleStyles: React.CSSProperties = {
-  fontSize: "1.25rem",
-  fontWeight: "600",
-  color: "#000",
-  lineHeight: "1.3",
+  fontSize: "28px",
+  fontWeight: 400,
+  color: "#212121",
+  lineHeight: 1.2,
   margin: 0,
 };
 

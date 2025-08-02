@@ -1,0 +1,43 @@
+.projectsSection {
+  padding: 4rem 0;
+  background-color: #f8f7f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 44px;
+  line-height: 1.1;
+  font-weight: 400;
+  color: #212121;
+  margin: 0;
+}
+
+.viewAllLink {
+  font-size: 16px;
+  color: #212121;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.projectItem {
+  /* Individual project item styling if needed */
+}

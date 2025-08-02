@@ -1,0 +1,177 @@
+.container {
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  background: #f0f0f0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #2d5016;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.categorySection {
+  margin-bottom: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.categoryHeader {
+  width: 100%;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.categoryHeader:hover {
+  background: #e9ecef;
+}
+
+.categoryTitle {
+  font-size: 1.3rem;
+  color: #2d5016;
+  margin: 0;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.categoryContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.categoryContent.open {
+  max-height: 2000px;
+}
+
+.faqItem {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.faqItem:last-child {
+  border-bottom: none;
+}
+
+.questionButton {
+  width: 100%;
+  padding: 1.5rem;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.questionButton:hover {
+  background: #f8f9fa;
+}
+
+.question {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #f8f9fa;
+}
+
+.answer.open {
+  max-height: 500px;
+}
+
+.answer p {
+  padding: 0 1.5rem 1.5rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contactSection {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.contactSection h3 {
+  color: #2d5016;
+  margin-bottom: 0.5rem;
+}
+
+.contactSection p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.contactButton {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #2d5016;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.contactButton:hover {
+  background: #1e350f;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .questionButton {
+    padding: 1rem;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+}
