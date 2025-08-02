@@ -1,10 +1,45 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const PrivacyPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
-    <div style={privacyPageStyles}>
+    <motion.div
+      style={privacyPageStyles}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div style={containerStyles}>
-        <div style={heroSectionStyles}>
+        <motion.div style={heroSectionStyles} variants={itemVariants}>
           <h1 style={titleStyles}>Privacy Policy</h1>
           <p style={subtitleStyles}>
             Last updated:{" "}
@@ -14,10 +49,10 @@ const PrivacyPage = () => {
               year: "numeric",
             })}
           </p>
-        </div>
+        </motion.div>
 
-        <div style={contentSectionStyles}>
-          <div style={textBlockStyles}>
+        <motion.div style={contentSectionStyles} variants={itemVariants}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>Introduction</h2>
             <p style={paragraphStyles}>
               Viterra ("we", "our", or "us") is committed to protecting and
@@ -27,9 +62,9 @@ const PrivacyPage = () => {
               privacy policy carefully. If you do not agree with the terms of
               this privacy policy, please do not access the Site.
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>Information We Collect</h2>
             <p style={paragraphStyles}>
               We may collect information about you in a variety of ways. The
@@ -49,9 +84,9 @@ const PrivacyPage = () => {
               system, your access times, and the pages you have viewed directly
               before and after accessing the Site.
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>Use of Your Information</h2>
             <p style={paragraphStyles}>
               Having accurate information about you permits us to provide you
@@ -73,9 +108,9 @@ const PrivacyPage = () => {
               </li>
               <li style={listItemStyles}>Improve our Site and services</li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>Disclosure of Your Information</h2>
             <p style={paragraphStyles}>
               We may share information we have collected about you in certain
@@ -89,9 +124,9 @@ const PrivacyPage = () => {
               and safety of others, we may share your information as permitted
               or required by any applicable law, rule, or regulation.
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>Security of Your Information</h2>
             <p style={paragraphStyles}>
               We use administrative, technical, and physical security measures
@@ -102,9 +137,9 @@ const PrivacyPage = () => {
               can be guaranteed against any interception or other type of
               misuse.
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>Contact Us</h2>
             <p style={paragraphStyles}>
               If you have questions or comments about this Privacy Policy,
@@ -117,10 +152,10 @@ const PrivacyPage = () => {
               <br />
               Phone: 020 7620 1453
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,10 +1,45 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const TermsPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
-    <div style={termsPageStyles}>
+    <motion.div
+      style={termsPageStyles}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div style={containerStyles}>
-        <div style={heroSectionStyles}>
+        <motion.div style={heroSectionStyles} variants={itemVariants}>
           <h1 style={titleStyles}>Terms of Service</h1>
           <p style={subtitleStyles}>
             Last updated:{" "}
@@ -14,10 +49,10 @@ const TermsPage = () => {
               year: "numeric",
             })}
           </p>
-        </div>
+        </motion.div>
 
-        <div style={contentSectionStyles}>
-          <div style={textBlockStyles}>
+        <motion.div style={contentSectionStyles} variants={itemVariants}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>1. Agreement to Terms</h2>
             <p style={paragraphStyles}>
               These Terms of Service constitute a legally binding agreement made
@@ -28,9 +63,9 @@ const TermsPage = () => {
               related, linked, or otherwise connected thereto (collectively, the
               "Site").
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>2. Intellectual Property Rights</h2>
             <p style={paragraphStyles}>
               Unless otherwise indicated, the Site is our proprietary property
@@ -43,9 +78,9 @@ const TermsPage = () => {
               unfair competition laws of the United States, foreign
               jurisdictions, and international conventions.
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>3. User Representations</h2>
             <p style={paragraphStyles}>
               By using the Site, you represent and warrant that:
@@ -79,9 +114,9 @@ const TermsPage = () => {
                 regulation
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>4. Prohibited Activities</h2>
             <p style={paragraphStyles}>
               You may not access or use the Site for any purpose other than that
@@ -115,9 +150,9 @@ const TermsPage = () => {
                 attempt to learn sensitive account information
               </li>
             </ul>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>5. Limitation of Liability</h2>
             <p style={paragraphStyles}>
               IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE
@@ -127,9 +162,9 @@ const TermsPage = () => {
               OTHER DAMAGES ARISING FROM YOUR USE OF THE SITE, EVEN IF WE HAVE
               BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
             </p>
-          </div>
+          </motion.div>
 
-          <div style={textBlockStyles}>
+          <motion.div style={textBlockStyles} variants={itemVariants}>
             <h2 style={sectionTitleStyles}>6. Contact Us</h2>
             <p style={paragraphStyles}>
               In order to resolve a complaint regarding the Site or to receive
@@ -143,10 +178,10 @@ const TermsPage = () => {
               <br />
               Phone: 020 7620 1453
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

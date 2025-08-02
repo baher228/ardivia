@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import SectionCard from "@/components/SectionCard";
+import { motion } from "framer-motion";
 
 interface Project {
   imageSrc: string;
@@ -11,6 +14,12 @@ interface Project {
 }
 
 const ProjectsPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   const projects: Project[] = [
     {
       imageSrc:
@@ -102,18 +111,55 @@ const ProjectsPage = () => {
     "Public Realm",
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  const projectItemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
-    <div style={projectsPageStyles}>
+    <motion.div
+      style={projectsPageStyles}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div style={containerStyles}>
-        <div style={heroSectionStyles}>
+        <motion.div style={heroSectionStyles} variants={itemVariants}>
           <h1 style={titleStyles}>Our Projects</h1>
           <p style={subtitleStyles}>
             Explore our portfolio of climate-resilient, sociable places that
             bring communities together.
           </p>
-        </div>
+        </motion.div>
 
-        <div style={filterSectionStyles}>
+        <motion.div style={filterSectionStyles} variants={itemVariants}>
           <div style={filterButtonsStyles}>
             {categories.map((category, index) => (
               <button
@@ -127,11 +173,15 @@ const ProjectsPage = () => {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div style={projectsGridStyles}>
+        <motion.div style={projectsGridStyles} variants={itemVariants}>
           {projects.map((project, index) => (
-            <div key={index} style={projectItemStyles}>
+            <motion.div
+              key={index}
+              style={projectItemStyles}
+              variants={projectItemVariants}
+            >
               <SectionCard
                 imageSrc={project.imageSrc}
                 title={project.title}
@@ -142,20 +192,20 @@ const ProjectsPage = () => {
                 <p style={projectDescriptionStyles}>{project.description}</p>
               )}
               <div style={categoryTagStyles}>{project.category}</div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div style={ctaSectionStyles}>
+        <motion.div style={ctaSectionStyles} variants={itemVariants}>
           <h2 style={ctaTitleStyles}>Have a project in mind?</h2>
           <p style={ctaTextStyles}>
             We&apos;d love to hear about your vision and explore how we can help
             create exceptional places together.
           </p>
           <button style={primaryButtonStyles}>Get in touch</button>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

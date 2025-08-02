@@ -1,19 +1,54 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const ContactPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
-    <div style={contactPageStyles}>
+    <motion.div
+      style={contactPageStyles}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div style={containerStyles}>
-        <div style={heroSectionStyles}>
+        <motion.div style={heroSectionStyles} variants={itemVariants}>
           <h1 style={titleStyles}>Get in touch</h1>
           <p style={subtitleStyles}>
             We&apos;d love to hear from you. Reach out to discuss your project
             or just to say hello.
           </p>
-        </div>
+        </motion.div>
 
-        <div style={contactContentStyles}>
-          <div style={contactInfoStyles}>
+        <motion.div style={contactContentStyles} variants={itemVariants}>
+          <motion.div style={contactInfoStyles} variants={itemVariants}>
             <div style={infoSectionStyles}>
               <h2 style={sectionTitleStyles}>Our Studios</h2>
               <div style={locationStyles}>
@@ -47,9 +82,9 @@ const ContactPage = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div style={contactFormStyles}>
+          <motion.div style={contactFormStyles} variants={itemVariants}>
             <h2 style={formTitleStyles}>Send us a message</h2>
             <form style={formStyles}>
               <div style={formGroupStyles}>
@@ -95,10 +130,10 @@ const ContactPage = () => {
                 Send Message
               </button>
             </form>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

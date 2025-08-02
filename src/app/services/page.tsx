@@ -1,49 +1,109 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import ServicesSection from "@/components/ServicesSection";
 import FaqSection from "@/components/FaqSection";
+import { motion } from "framer-motion";
 
 const ServicesPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  const processStepVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
-    <div style={servicesPageStyles}>
+    <motion.div
+      style={servicesPageStyles}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div style={containerStyles}>
-        <div style={heroSectionStyles}>
+        <motion.div style={heroSectionStyles} variants={itemVariants}>
           <h1 style={titleStyles}>Our Services</h1>
           <p style={subtitleStyles}>
             Comprehensive landscape design and construction services tailored to
             your unique vision.
           </p>
-        </div>
+        </motion.div>
 
-        <ServicesSection />
+        <motion.div variants={itemVariants}>
+          <ServicesSection />
+        </motion.div>
 
-        <div style={processSectionStyles}>
+        <motion.div style={processSectionStyles} variants={itemVariants}>
           <h2 style={sectionTitleStyles}>Our Design Process</h2>
           <div style={processStepsStyles}>
-            <div style={processStepStyles}>
+            <motion.div
+              style={processStepStyles}
+              variants={processStepVariants}
+            >
               <div style={stepNumberStyles}>1</div>
               <h3 style={stepTitleStyles}>Consultation</h3>
               <p style={stepDescriptionStyles}>
                 We begin with a thorough consultation to understand your needs,
                 preferences, and the unique characteristics of your site.
               </p>
-            </div>
-            <div style={processStepStyles}>
+            </motion.div>
+            <motion.div
+              style={processStepStyles}
+              variants={processStepVariants}
+            >
               <div style={stepNumberStyles}>2</div>
               <h3 style={stepTitleStyles}>Concept Design</h3>
               <p style={stepDescriptionStyles}>
                 Our team develops initial design concepts that reflect your
                 vision while addressing site constraints and opportunities.
               </p>
-            </div>
-            <div style={processStepStyles}>
+            </motion.div>
+            <motion.div
+              style={processStepStyles}
+              variants={processStepVariants}
+            >
               <div style={stepNumberStyles}>3</div>
               <h3 style={stepTitleStyles}>Detailed Design</h3>
               <p style={stepDescriptionStyles}>
                 We refine the chosen concept into detailed plans,
                 specifications, and planting schedules ready for implementation.
               </p>
-            </div>
-            <div style={processStepStyles}>
+            </motion.div>
+            <motion.div
+              style={processStepStyles}
+              variants={processStepVariants}
+            >
               <div style={stepNumberStyles}>4</div>
               <h3 style={stepTitleStyles}>Construction</h3>
               <p style={stepDescriptionStyles}>
@@ -51,13 +111,15 @@ const ServicesPage = () => {
                 attention to detail and the highest quality materials and
                 craftsmanship.
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
-        <FaqSection />
+        <motion.div variants={itemVariants}>
+          <FaqSection />
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
