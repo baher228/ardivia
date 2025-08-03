@@ -128,7 +128,6 @@ const servicesPageStyles: React.CSSProperties = {
 };
 
 const containerStyles: React.CSSProperties = {
-  maxWidth: "1200px",
   margin: "0 auto",
   padding: "0 2rem",
 };
@@ -159,7 +158,7 @@ const subtitleStyles: React.CSSProperties = {
 const processSectionStyles: React.CSSProperties = {
   padding: "4rem 0",
   backgroundColor: "#f8f8f8",
-  margin: "4rem 0",
+  margin: "0rem 0",
 };
 
 const sectionTitleStyles: React.CSSProperties = {
@@ -219,7 +218,6 @@ const mediaQueryStyles = `
       padding: 0 1rem !important;
     }
     
-    .process-steps {
       grid-template-columns: 1fr !important;
     }
   }

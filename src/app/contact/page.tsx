@@ -141,6 +141,7 @@ const contactPageStyles: React.CSSProperties = {
   paddingTop: "120px",
   minHeight: "100vh",
   backgroundColor: "#fff",
+  paddingBottom: "4rem",
 };
 
 const containerStyles: React.CSSProperties = {
@@ -175,7 +176,6 @@ const contactContentStyles: React.CSSProperties = {
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   gap: "4rem",
-  marginBottom: "4rem",
 };
 
 const contactInfoStyles: React.CSSProperties = {
