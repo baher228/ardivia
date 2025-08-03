@@ -115,9 +115,7 @@ const ServicesPage = () => {
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants}>
-          <FaqSection />
-        </motion.div>
+        <motion.div variants={itemVariants}></motion.div>
       </div>
     </motion.div>
   );

@@ -13,7 +13,6 @@ export default function Home() {
       <ServicesSection />
       <RecentProjectsSection />
       <FaqSection />
-      <NewsSection />
     </div>
   );
 }

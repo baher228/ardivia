@@ -13,14 +13,14 @@ const RecentProjectsSection: React.FC = () => {
   const projectItems: ProjectItem[] = [
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2023/05/Goodmans-7-10x7.jpg",
+        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Edenbrook-Web-Photo-by-Studio-Maple-268.jpg",
       title: "Goodman's Fields",
       subtitle: "Aldgate, London",
       link: "/portfolio/goodmans-fields",
     },
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2024/02/Image-1-10x6.jpg",
+        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Reading-Greenpark-Web-224.jpg",
       title: "Whitehill and Bordon",
       subtitle: "Bordon, Hampshire",
       link: "/portfolio/whitehill-and-bordon",

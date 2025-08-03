@@ -54,7 +54,7 @@
   transition: color var(--transition-medium);
 }
 .topLink:hover {
-  color: var(--soft-gold);
+  color: #326750;
 }
 
 .iconCircle {
@@ -116,6 +116,7 @@
   position: relative;
   color: var(--primary-green);
   font-weight: 500;
+  font-size: 1.5rem;
   text-decoration: none;
   padding: 0.5rem 0;
   transition: color var(--transition-medium);
@@ -147,7 +148,7 @@
 }
 
 .ctaButton {
-  background: var(--gold);
+  background: #004225;
   color: #fff;
   padding: 0.8rem 1.8rem;
   font-weight: 700;
@@ -158,7 +159,7 @@
   transition: all var(--transition-medium);
 }
 .ctaButton:hover {
-  background: var(--soft-gold);
+  background: #326750;
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }

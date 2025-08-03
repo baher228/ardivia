@@ -13,15 +13,6 @@ const Footer: React.FC = () => {
         {/* ───────────────── TOP ROW: LOCATIONS ───────────────── */}
         <div style={topRowStyles}>
           <div style={locationBlockStyles}>
-            <h4 style={locationTitleStyles}>Alton</h4>
-            <p style={contactTextStyles}>01420 593 250</p>
-            <p style={contactTextStyles}>alton@viterra.com</p>
-            <p style={addressStyles}>
-              Lenten House, 16 Lenten Street, Alton, GU34 1HG
-            </p>
-          </div>
-
-          <div style={locationBlockStyles}>
             <h4 style={locationTitleStyles}>London</h4>
             <p style={contactTextStyles}>020 7620 1453</p>
             <p style={contactTextStyles}>london@viterra.com</p>
@@ -60,9 +51,6 @@ const Footer: React.FC = () => {
             <a href="/terms" style={footerLinkStyles}>
               Terms
             </a>
-            <a href="https://rabbithole.com" style={footerLinkStyles}>
-              Site by Rabbithole®
-            </a>
           </div>
 
           {/* Copyright – right */}
@@ -84,7 +72,6 @@ const footerStyles: React.CSSProperties = {
 };
 
 const containerStyles: React.CSSProperties = {
-  maxWidth: "1200px",
   margin: "0 auto",
   padding: "0 2rem",
   display: "flex",

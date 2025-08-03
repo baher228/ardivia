@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./FaqSection.module.css";
 
+/* ---------- DATA  ---------- */
 const faqs = [
   {
     category: "Getting Started",
@@ -86,88 +87,118 @@ const faqs = [
   },
 ];
 
+/* ---------- COMPONENT  ---------- */
 const FaqSection: React.FC = () => {
+  /* Accordion state */
   const [openCategories, setOpenCategories] = useState<string[]>([]);
   const [openQuestions, setOpenQuestions] = useState<string[]>([]);
+  const [closingQuestions, setClosingQuestions] = useState<string[]>([]);
 
-  const toggleCategory = (category: string) => {
+  const DURATION = 400; // ms – must match CSS transition time
+
+  /* Category toggle */
+  const toggleCategory = (category: string) =>
     setOpenCategories((prev) =>
       prev.includes(category)
         ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
-  };
 
+  /* Question toggle with delayed icon reset */
   const toggleQuestion = (question: string) => {
-    setOpenQuestions((prev) =>
-      prev.includes(question)
-        ? prev.filter((q) => q !== question)
-        : [...prev, question]
-    );
+    setOpenQuestions((prev) => {
+      const isOpen = prev.includes(question);
+
+      if (isOpen) {
+        // Begin closing: keep icon minus until animation ends
+        setClosingQuestions((closing) => [...closing, question]);
+        // Remove after animation completes
+        setTimeout(() => {
+          setClosingQuestions((closing) =>
+            closing.filter((q) => q !== question)
+          );
+        }, DURATION);
+
+        return prev.filter((q) => q !== question);
+      }
+      // Opening – normal add
+      return [...prev, question];
+    });
   };
 
+  /* Render */
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <section className={styles.container}>
+      <header className={styles.header}>
         <h1 className={styles.title}>Frequently Asked Questions</h1>
         <p className={styles.subtitle}>
           Find answers to common questions about our landscape design and garden
           services
         </p>
-      </div>
+      </header>
 
       <div className={styles.faqContainer}>
-        {faqs.map((category, categoryIndex) => (
-          <div key={categoryIndex} className={styles.categorySection}>
-            <button
-              className={styles.categoryHeader}
-              onClick={() => toggleCategory(category.category)}
-            >
-              <h3 className={styles.categoryTitle}>{category.category}</h3>
-              <span
-                className={`${styles.arrow} ${
-                  openCategories.includes(category.category) ? styles.open : ""
+        {faqs.map(({ category, questions }) => {
+          const categoryOpen = openCategories.includes(category);
+
+          return (
+            <div key={category} className={styles.categorySection}>
+              <button
+                className={styles.categoryHeader}
+                onClick={() => toggleCategory(category)}
+                aria-expanded={categoryOpen}
+              >
+                <h3 className={styles.categoryTitle}>{category}</h3>
+                <span
+                  className={`${styles.symbol} ${
+                    categoryOpen ? styles.symbolOpen : ""
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              <div
+                className={`${styles.categoryContent} ${
+                  categoryOpen ? styles.open : ""
                 }`}
               >
-                ▼
-              </span>
-            </button>
+                {questions.map(({ question, answer }) => {
+                  const questionOpen = openQuestions.includes(question);
+                  const iconShouldBeMinus =
+                    questionOpen || closingQuestions.includes(question);
 
-            <div
-              className={`${styles.categoryContent} ${
-                openCategories.includes(category.category) ? styles.open : ""
-              }`}
-            >
-              {category.questions.map((faq, questionIndex) => (
-                <div key={questionIndex} className={styles.faqItem}>
-                  <button
-                    className={styles.questionButton}
-                    onClick={() => toggleQuestion(faq.question)}
-                  >
-                    <h4 className={styles.question}>{faq.question}</h4>
-                    <span
-                      className={`${styles.arrow} ${
-                        openQuestions.includes(faq.question) ? styles.open : ""
-                      }`}
-                    >
-                      ▼
-                    </span>
-                  </button>
+                  return (
+                    <div key={question} className={styles.faqItem}>
+                      <button
+                        className={styles.questionButton}
+                        onClick={() => toggleQuestion(question)}
+                        aria-expanded={questionOpen}
+                      >
+                        <h4 className={styles.question}>{question}</h4>
+                        <span
+                          className={`${styles.symbol} ${
+                            iconShouldBeMinus ? styles.symbolOpen : ""
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </button>
 
-                  <div
-                    className={`${styles.answer} ${
-                      openQuestions.includes(faq.question) ? styles.open : ""
-                    }`}
-                  >
-                    <p>{faq.answer}</p>
-                  </div>
-                </div>
-              ))}
+                      <div
+                        className={`${styles.answer} ${
+                          questionOpen ? styles.open : ""
+                        }`}
+                      >
+                        <p>{answer}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-    </div>
+    </section>
   );
 };
 

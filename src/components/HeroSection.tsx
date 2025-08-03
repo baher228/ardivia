@@ -33,18 +33,21 @@ const HeroSection: React.FC = () => {
             {/* note the custom paddingTop = nav height */}
             <div style={{ ...overlayStyles, paddingTop: NAV_HEIGHT }}>
               <div style={twoColumnStyles}>
-                {/* logo column */}
+                {/* logo column 
                 <div style={leftColumnStyles}>
                   <h1 style={logoStyles}>viterra</h1>
                 </div>
-
+                
                 {/* divider */}
+                {/*
                 <div style={lineStyles} />
 
                 {/* headline column */}
+                {/*
                 <div style={rightColumnStyles}>
                   <h1 style={titleStyles}>{slide.title}</h1>
                 </div>
+                */}
               </div>
             </div>
           </div>
