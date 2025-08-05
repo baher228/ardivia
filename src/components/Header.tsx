@@ -9,11 +9,19 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
 
+  /* ─── fade header on scroll ─── */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  /* ─── lock page when menu is open ─── */
+  useEffect(() => {
+    document.body.style.overflow = navOpen ? "hidden" : "";
+  }, [navOpen]);
+
+  const closeNav = () => setNavOpen(false);
 
   return (
     <header
@@ -74,18 +82,35 @@ export default function Header() {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/about" className={styles.navLink}>
+          {/* close “×” only visible on mobile */}
+          <button
+            className={styles.closeNav}
+            onClick={closeNav}
+            aria-label="Close navigation"
+          >
+            ×
+          </button>
+
+          <Link href="/about" className={styles.navLink} onClick={closeNav}>
             About
           </Link>
-          <Link href="/services" className={styles.navLink}>
+          <Link href="/services" className={styles.navLink} onClick={closeNav}>
             Services
           </Link>
-          <Link href="/projects" className={styles.navLink}>
+          <Link href="/projects" className={styles.navLink} onClick={closeNav}>
             Projects
           </Link>
-          <Link href="/contact" className={styles.navLink}>
+          <Link href="/contact" className={styles.navLink} onClick={closeNav}>
             Contact
           </Link>
+
+          {/* CTA duplicated so it’s reachable inside the panel */}
+          <a
+            href="/contact"
+            className={`${styles.ctaButton} ${styles.ctaMobile}`}
+          >
+            BOOK A FREE CONSULTATION
+          </a>
         </nav>
 
         <div className={styles.actions}>
@@ -96,7 +121,7 @@ export default function Header() {
           <button
             className={styles.menuToggle}
             onClick={() => setNavOpen(!navOpen)}
-            aria-label="Toggle navigation"
+            aria-label={navOpen ? "Close navigation" : "Open navigation"}
           >
             <div
               className={`${styles.hamburger} ${navOpen ? styles.active : ""}`}

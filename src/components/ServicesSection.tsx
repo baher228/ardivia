@@ -19,28 +19,25 @@ const DesignIcon = () => (
 const ServicesSection = () => {
   const services = [
     {
-      icon: <DesignIcon />,
+      imageSrc: "/servicesPhotos/Design.jpg",
       title: "DESIGN",
       description:
         "Innovative and inspirational designs created for private, residential gardens, roof terraces, commercial outside spaces and schools.",
     },
     {
-      imageSrc:
-        "https://www.belderbos.co.uk/wp-content/uploads/2018/09/Belderbos-Landscapes-Garden-Design-Holland-Park-1-1-768x512.jpg",
+      imageSrc: "/servicesPhotos/landscaping.jpg",
       title: "LANDSCAPE ARCHITECTURE",
       description:
         "Landscaping gardens and outdoor spaces to exacting standards for private residential clients, Garden Designers and Landscape Architects.",
     },
     {
-      imageSrc:
-        "https://www.belderbos.co.uk/wp-content/uploads/2019/10/water-feature-1-768x512.jpg",
+      imageSrc: "/servicesPhotos/garden.jpg",
       title: "LANDSCAPING",
       description:
         "Garden maintenance for residential & commercial clients across London & the Home Counties. Ensuring your garden will look beautiful all year round.",
     },
     {
-      imageSrc:
-        "https://www.belderbos.co.uk/wp-content/uploads/2016/09/IMG_3515-768x512.jpg",
+      imageSrc: "/servicesPhotos/maintenance.jpg",
       title: "MAINTENANCE",
       description:
         "Viterra Landscapes supplies Cane-line - stylish outdoor furniture to accessorise your garden and enjoy the great outdoors.",
@@ -59,7 +56,6 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <ServiceCard
               key={index}
-              icon={service.icon}
               imageSrc={service.imageSrc}
               title={service.title}
               description={service.description}

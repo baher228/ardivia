@@ -34,19 +34,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           <Image
             src={imageSrc}
             alt={title}
-            layout="fill"
-            objectFit="cover"
-            className="transform transition-transform duration-700 group-hover:scale-110"
+            fill
+            className="object-cover transform transition-transform duration-700 group-hover:scale-110"
           />
         )}
-        {icon && (
-          <div className="absolute inset-0 bg-green-500 flex items-center justify-center">
-            {icon}
-          </div>
-        )}
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-500 group-hover:bg-opacity-60">
-          <h3 className="text-white text-2xl font-bold">{title}</h3>
-        </div>
       </div>
       <div className="p-6">
         <p className="text-gray-600 mb-4">{description}</p>

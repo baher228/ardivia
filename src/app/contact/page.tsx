@@ -51,14 +51,6 @@ const ContactPage = () => {
           <motion.div style={contactInfoStyles} variants={itemVariants}>
             <div style={infoSectionStyles}>
               <h2 style={sectionTitleStyles}>Our Studios</h2>
-              <div style={locationStyles}>
-                <h3 style={locationTitleStyles}>Alton</h3>
-                <p style={contactTextStyles}>01420 593 250</p>
-                <p style={contactTextStyles}>alton@viterra.com</p>
-                <p style={addressStyles}>
-                  Lenten House, 16 Lenten Street, Alton, GU34 1HG
-                </p>
-              </div>
 
               <div style={locationStyles}>
                 <h3 style={locationTitleStyles}>London</h3>
