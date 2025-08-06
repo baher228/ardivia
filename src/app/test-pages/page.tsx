@@ -8,7 +8,6 @@ const TestPages = () => {
     { name: "Services", path: "/services" },
     { name: "Projects", path: "/projects" },
     { name: "Contact", path: "/contact" },
-    { name: "Careers", path: "/careers" },
     { name: "Places", path: "/places" },
     { name: "Privacy Policy", path: "/privacy" },
     { name: "Terms of Service", path: "/terms" },

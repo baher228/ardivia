@@ -1,5 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import SectionCard from "./SectionCard";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface NewsItem {
   imageSrc: string;
@@ -39,19 +43,58 @@ const NewsSection: React.FC = () => {
     },
   ];
 
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
-    <section style={newsSectionStyles}>
+    <motion.section
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+      style={newsSectionStyles}
+    >
       <div style={containerStyles}>
-        <div style={headerStyles}>
+        <motion.div style={headerStyles} variants={itemVariants}>
           <h2 style={titleStyles}>Common ground</h2>
           <a href="/sharing-listening" style={viewAllLinkStyles}>
             view all news →
           </a>
-        </div>
+        </motion.div>
 
-        <div style={newsGridStyles}>
+        <motion.div style={newsGridStyles} variants={containerVariants}>
           {newsItems.map((item, index) => (
-            <div key={index} style={newsItemStyles}>
+            <motion.div key={index} style={newsItemStyles} variants={itemVariants}>
               <SectionCard
                 imageSrc={item.imageSrc}
                 title={item.title}
@@ -59,11 +102,11 @@ const NewsSection: React.FC = () => {
                 link={item.link}
                 category={item.category}
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -42,6 +42,13 @@ const EdenbrookVillagePage = () => {
     },
   };
 
+  const galleryImages = [
+    "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Edenbrook-Web-Photo-by-Studio-Maple-268.jpg",
+    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/hampshire/edenbrook/edenbrook-hero-1-1200x800.jpg",
+    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/hampshire/edenbrook/edenbrook-hero-2-1200x800.jpg",
+    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/hampshire/edenbrook/edenbrook-hero-3-1200x800.jpg"
+  ];
+
   return (
     <motion.div
       className="min-h-screen bg-white pt-24"
@@ -91,7 +98,7 @@ const EdenbrookVillagePage = () => {
           variants={imageVariants}
         >
           <img
-            src="https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Edenbrook-Web-Photo-by-Studio-Maple-268.jpg"
+            src={galleryImages[0]}
             alt="Edenbrook Village Development"
             className="w-full h-auto"
           />
@@ -107,15 +114,14 @@ const EdenbrookVillagePage = () => {
               traditional English garden village, thoughtfully integrated into
               the rolling hills of the South Downs. Our landscape architecture
               approach emphasizes the preservation and enhancement of existing
-              natural features while creating a cohesive community environment.
+              natural features while creating a cohesive community environment. The development provides a range of new homes, from apartments to large family houses, all designed to a high standard of sustainability.
             </p>
 
             <p className="text-lg text-gray-600 mb-6">
-              The development features over 500 homes organized around a central
-              village green, with extensive parkland and woodland areas that
+              The development features over 82 acres of country park, with extensive parkland and woodland areas that
               provide residents with direct access to nature. Our design creates
               a series of interconnected green spaces that serve as both
-              recreational areas and wildlife corridors.
+              recreational areas and wildlife corridors, including a new village green, sports pitches, and a network of footpaths and cycleways.
             </p>
 
             <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
@@ -126,7 +132,7 @@ const EdenbrookVillagePage = () => {
               sustainable community that enhances rather than diminishes the
               natural beauty of the South Downs. We've preserved existing mature
               trees and hedgerows while introducing new native planting that
-              will mature over time to create a rich, biodiverse landscape.
+              will mature over time to create a rich, biodiverse landscape. The masterplan has been designed to create a strong sense of place, with a clear hierarchy of streets and spaces that are safe and welcoming for pedestrians and cyclists.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
@@ -135,10 +141,11 @@ const EdenbrookVillagePage = () => {
                   Sustainability Features
                 </h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Preservation of existing mature trees</li>
-                  <li>Native hedgerow restoration</li>
-                  <li>Rain gardens for water management</li>
-                  <li>Community orchard and vegetable plots</li>
+                  <li>Preservation of existing mature trees and hedgerows</li>
+                  <li>Native and wildlife-attracting planting schemes</li>
+                  <li>Sustainable urban drainage systems (SuDS)</li>
+                  <li>Community allotments and a new orchard</li>
+                  <li>Excellent public transport links</li>
                 </ul>
               </div>
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -146,13 +153,26 @@ const EdenbrookVillagePage = () => {
                   Community Impact
                 </h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Central village green for gatherings</li>
-                  <li>Walking trails through preserved landscape</li>
-                  <li>Enhanced connection to South Downs National Park</li>
-                  <li>Reduced carbon footprint through design</li>
+                  <li>A new village green and community facilities</li>
+                  <li>Extensive walking and cycling routes</li>
+                  <li>Enhanced connection to the South Downs National Park</li>
+                  <li>A significant increase in local biodiversity</li>
+                  <li>A safe and healthy environment for families</li>
                 </ul>
               </div>
             </div>
+            
+            <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
+              Project Gallery
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {galleryImages.map((src, index) => (
+                <motion.div key={index} variants={itemVariants} className="overflow-hidden rounded-lg">
+                  <img src={src} alt={`Edenbrook Village Gallery Image ${index + 1}`} className="w-full h-auto object-cover"/>
+                </motion.div>
+              ))}
+            </div>
+
           </motion.div>
 
           <motion.div className="lg:col-span-1" variants={itemVariants}>
@@ -163,24 +183,24 @@ const EdenbrookVillagePage = () => {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium text-gray-900">Location</h4>
-                  <p className="text-gray-600">Alton, Hampshire</p>
+                  <p className="text-gray-600">Fleet, Hampshire</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Completion</h4>
-                  <p className="text-gray-600">2025</p>
+                  <p className="text-gray-600">Ongoing</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Size</h4>
-                  <p className="text-gray-600">45 acres</p>
+                  <p className="text-gray-600">120 acres</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Client</h4>
-                  <p className="text-gray-600">Edenbrook Homes Ltd</p>
+                  <p className="text-gray-600">Berkeley Group</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Services</h4>
                   <p className="text-gray-600">
-                    Landscape Architecture, Master Planning
+                    Landscape Architecture, Master Planning, Urban Design
                   </p>
                 </div>
               </div>
@@ -194,7 +214,7 @@ const EdenbrookVillagePage = () => {
                     href="/place/goodmans-field"
                     className="text-white hover:underline"
                   >
-                    Goodman&apos;s Fields
+                    Goodman's Fields
                   </a>
                 </li>
                 <li>
@@ -203,14 +223,6 @@ const EdenbrookVillagePage = () => {
                     className="text-white hover:underline"
                   >
                     Whitehill and Bordon
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/place/kings-cross"
-                    className="text-white hover:underline"
-                  >
-                    King&apos;s Cross Development
                   </a>
                 </li>
               </ul>

@@ -8,6 +8,7 @@ interface SectionCardProps {
   title: string;
   subtitle?: string;
   link: string;
+  category?: string;
 }
 
 const SectionCard: React.FC<SectionCardProps> = ({
@@ -15,6 +16,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
   title,
   subtitle,
   link,
+  category,
 }) => {
   return (
     <div style={cardStyles}>
@@ -35,6 +37,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
           />
         </div>
         <div style={contentStyles}>
+          {category && <p style={categoryStyles}>{category}</p>}
           {subtitle && <p style={subtitleStyles}>{subtitle}</p>}
           <h3 style={titleStyles}>{title}</h3>
         </div>
@@ -75,6 +78,14 @@ const imageStyles: React.CSSProperties = {
 
 const contentStyles: React.CSSProperties = {
   padding: "1rem 0",
+};
+
+const categoryStyles: React.CSSProperties = {
+  fontSize: "12px",
+  color: "#666",
+  marginBottom: "0.25rem",
+  fontWeight: 600,
+  textTransform: "uppercase",
 };
 
 const subtitleStyles: React.CSSProperties = {

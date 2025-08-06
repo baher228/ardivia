@@ -1,155 +1,217 @@
-import React from "react";
+"use client";
 
-/**
- * Fully‑styled footer component matching the reference layout.
- * No placeholders – every text string, style, and link is concrete.
- */
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Instagram,
+  Linkedin,
+  Facebook,
+  ChevronUp,
+} from "lucide-react";
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Data
+// ────────────────────────────────────────────────────────────────────────────────
+const services = [
+  "Garden Design",
+  "Landscaping",
+  "Garden Maintenance",
+  "Planting Design",
+  "Hard Landscaping",
+  "Soft Landscaping",
+];
+
+const locations = [
+  {
+    city: "London",
+    phone: "020 7620 1453",
+    email: "london@viterra.com",
+    address:
+      "First Floor Studio, The Old School, 4 Exton Street, London SE1 8UE",
+  },
+];
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Helpers
+// ────────────────────────────────────────────────────────────────────────────────
+const currentYear = new Date().getFullYear();
+
+const social = [
+  { href: "https://instagram.com/viterra", label: "Instagram", Icon: Instagram },
+  { href: "https://linkedin.com/company/viterra", label: "LinkedIn", Icon: Linkedin },
+  { href: "https://facebook.com/viterra", label: "Facebook", Icon: Facebook },
+];
+
+// ────────────────────────────────────────────────────────────────────────────────
+// Component
+// ────────────────────────────────────────────────────────────────────────────────
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  const [showFab, setShowFab] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowFab(window.scrollY > 350);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <footer style={footerStyles}>
-      <div style={containerStyles}>
-        {/* ───────────────── TOP ROW: LOCATIONS ───────────────── */}
-        <div style={topRowStyles}>
-          <div style={locationBlockStyles}>
-            <h4 style={locationTitleStyles}>London</h4>
-            <p style={contactTextStyles}>020 7620 1453</p>
-            <p style={contactTextStyles}>london@viterra.com</p>
-            <p style={addressStyles}>
-              First Floor Studio, The Old School, 4 Exton Street, London SE1 8UE
-            </p>
-          </div>
+    <footer
+      className="relative mt-auto text-neutral-300 selection:bg-green-600/40
+                 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-700
+                 bg-gradient-to-b from-neutral-900 to-neutral-950"
+    >
+      {/* ---------- Top grid ---------- */}
+      <div
+        className="mx-auto max-w-[min(90rem,90%)] px-6 pt-20 pb-12
+                   grid gap-y-14 gap-x-10 md:grid-cols-4 xl:grid-cols-6"
+      >
+        {/* Column 1 – Brand */}
+        <div className="md:col-span-2 xl:col-span-2 space-y-6">
+          <h2 className="text-2xl font-semibold tracking-wide text-neutral-100">
+            viterra
+          </h2>
+          <p className="text-sm md:text-base 2xl:text-lg leading-relaxed">
+            Professional landscaping services creating beautiful outdoor
+            spaces.<br className="hidden sm:inline" /> From garden design to
+            maintenance, we bring your vision to life.
+          </p>
+          <nav className="flex space-x-6">
+            {social.map(({ href, label, Icon }) => (
+              <Link
+                key={label}
+                href={href}
+                aria-label={label}
+                className="hover:text-white focus-visible:outline focus-visible:outline-2
+                           focus-visible:outline-offset-2 focus-visible:outline-white
+                           transition-colors"
+              >
+                <Icon className="h-5 w-5 md:h-6 md:w-6" />
+              </Link>
+            ))}
+          </nav>
+        </div>
+        {/* Column 4 – Quick links */}
+        <div className="space-y-6">
+          <h3 className="text-lg font-semibold text-neutral-100">Quick Links</h3>
+          <ul className="space-y-3">
+            {[
+              ["About Us", "/about"],
+              ["Our Projects", "/projects"],
+              ["Contact", "/contact"],
+              ["Privacy Policy", "/privacy"],
+              ["Terms of Service", "/terms"],
+            ].map(([label, href]) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  className="text-sm md:text-base hover:text-white transition-colors
+                             focus-visible:outline focus-visible:outline-2
+                             focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* ───────────────── BOTTOM ROW: LINKS & COPYRIGHT ───────────────── */}
-        <div style={bottomRowStyles}>
-          {/* Social links – left */}
-          <div style={{ ...socialLinksStyles, justifySelf: "start" }}>
-            <a href="https://instagram.com" style={socialLinkStyles}>
-              Instagram
-            </a>
-            <a href="https://linkedin.com" style={socialLinkStyles}>
-              LinkedIn
-            </a>
-          </div>
+        {/* Column 2 – Services */}
+        <div className="space-y-6">
+          <h3 className="text-lg font-semibold text-neutral-100">Services</h3>
+          <ul className="space-y-3">
+            {services.map((s) => (
+              <li key={s}>
+                <Link
+                  href="/services"
+                  className="text-sm md:text-base hover:text-white transition-colors
+                             focus-visible:outline focus-visible:outline-2
+                             focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  {s}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* Site links – centre */}
-          <div style={{ ...siteLinksStyles, justifySelf: "center" }}>
-            <a href="/careers" style={footerLinkStyles}>
-              Careers
-            </a>
-            <a href="/services" style={footerLinkStyles}>
-              Services
-            </a>
-            <a href="/projects" style={footerLinkStyles}>
-              Projects
-            </a>
-            <a href="/privacy" style={footerLinkStyles}>
-              Privacy
-            </a>
-            <a href="/terms" style={footerLinkStyles}>
-              Terms
-            </a>
-          </div>
+        {/* Column 3 – Locations */}
+        <div className="space-y-6 xl:col-span-2">
+          <h3 className="text-lg font-semibold text-neutral-100">Locations</h3>
+          <ul className="space-y-8">
+            {locations.map((loc) => (
+              <li key={loc.city}>
+                <p className="font-medium text-neutral-100">{loc.city}</p>
+                <p className="text-sm md:text-base">{loc.phone}</p>
+                <p className="text-sm md:text-base break-all">{loc.email}</p>
+                <p className="text-sm md:text-base">{loc.address}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* Copyright – right */}
-          <div style={{ ...copyrightBlockStyles, justifySelf: "end" }}>
-            © viterra, {currentYear}
-          </div>
+        
+      </div>
+
+      {/* ---------- Bottom bar ---------- */}
+      <div className="border-t border-neutral-800">
+        <div
+          className="mx-auto max-w-[min(90rem,90%)] px-6 py-6
+                     flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+        >
+          <p className="text-xs md:text-sm text-neutral-400">
+            © {currentYear} viterra. All rights reserved.
+          </p>
+          <nav className="flex space-x-6">
+            {[
+              ["Privacy", "/privacy"],
+              ["Terms", "/terms"],
+              ["Sitemap", "/sitemap"],
+            ].map(([label, href]) => (
+              <Link
+                key={label}
+                href={href}
+                className="text-xs md:text-sm text-neutral-400 hover:text-white
+                           transition-colors focus-visible:outline focus-visible:outline-2
+                           focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
+
+      {/* ---------- FAB ---------- */}
+      <AnimatePresence>
+        {showFab && (
+          <motion.button
+            key="fab"
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              })
+            }
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.25 }}
+            aria-label="Back to top"
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50
+                       w-12 h-12 md:w-14 md:h-14 rounded-full
+                       bg-neutral-800 hover:bg-neutral-700 text-white
+                       shadow-lg flex items-center justify-center
+                       focus-visible:outline focus-visible:outline-2
+                       focus-visible:outline-offset-2 focus-visible:outline-white
+                       transition-colors"
+          >
+            <ChevronUp className="h-5 w-5 md:h-6 md:w-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   );
-};
-
-/* ────────────────────────── STYLES ────────────────────────── */
-const footerStyles: React.CSSProperties = {
-  backgroundColor: "#f8f8f8",
-  padding: "3rem 0 2rem",
-
-  borderTop: "1px solid #e5e5e5",
-};
-
-const containerStyles: React.CSSProperties = {
-  margin: "0 auto",
-  padding: "0 2rem",
-  display: "flex",
-  flexDirection: "column",
-  gap: "2rem",
-};
-
-// Top row holds both locations side‑by‑side and wraps on small screens.
-const topRowStyles: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
-  flexWrap: "wrap",
-  gap: "2rem",
-};
-
-const locationBlockStyles: React.CSSProperties = {
-  flex: "0 0 48%", // two columns on wide screens, full width on narrow
-  minWidth: "260px",
-};
-
-const locationTitleStyles: React.CSSProperties = {
-  fontSize: "1.1rem",
-  fontWeight: 600,
-  marginBottom: "0.5rem",
-  color: "#000",
-};
-
-const contactTextStyles: React.CSSProperties = {
-  fontSize: "0.9rem",
-  color: "#666",
-  marginBottom: "0.25rem",
-};
-
-const addressStyles: React.CSSProperties = {
-  fontSize: "0.9rem",
-  color: "#666",
-  lineHeight: 1.4,
-  marginTop: "0.5rem",
-};
-
-// Bottom grid layout: 3 columns (left / centre / right)
-const bottomRowStyles: React.CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr",
-  alignItems: "center",
-  gap: "1rem",
-  borderTop: "1px solid #e0e0e0",
-  paddingTop: "1rem",
-};
-
-const socialLinksStyles: React.CSSProperties = {
-  display: "flex",
-  gap: "1.5rem",
-};
-
-const siteLinksStyles: React.CSSProperties = {
-  display: "flex",
-  gap: "1.5rem",
-};
-
-const copyrightBlockStyles: React.CSSProperties = {
-  fontSize: "0.8rem",
-  color: "#999",
-  textAlign: "right",
-};
-
-const socialLinkStyles: React.CSSProperties = {
-  fontSize: "0.9rem",
-  color: "#666",
-  textDecoration: "none",
-  transition: "color 0.3s ease",
-};
-
-const footerLinkStyles: React.CSSProperties = {
-  fontSize: "0.9rem",
-  color: "#666",
-  textDecoration: "none",
-  transition: "color 0.3s ease",
 };
 
 export default Footer;

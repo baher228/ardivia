@@ -3,12 +3,70 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 const ContactPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("");
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("");
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("Thank you for your message! We'll get back to you soon.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("Sorry, there was an error sending your message. Please try again.");
+      }
+    } catch (error) {
+      setSubmitStatus("Sorry, there was an error sending your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,60 +124,121 @@ const ContactPage = () => {
             <div style={infoSectionStyles}>
               <h2 style={sectionTitleStyles}>Connect With Us</h2>
               <div style={socialLinksStyles}>
-                <a href="https://instagram.com" style={socialLinkStyles}>
+                <a href="https://instagram.com/viterra" style={socialLinkStyles}>
                   Instagram
                 </a>
-                <a href="https://linkedin.com" style={socialLinkStyles}>
+                <a href="https://linkedin.com/company/viterra" style={socialLinkStyles}>
                   LinkedIn
                 </a>
+                <a href="https://facebook.com/viterra" style={socialLinkStyles}>
+                  Facebook
+                </a>
+              </div>
+            </div>
+
+            <div style={infoSectionStyles}>
+              <h2 style={sectionTitleStyles}>Business Hours</h2>
+              <div style={businessHoursStyles}>
+                <p style={contactTextStyles}>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p style={contactTextStyles}>Saturday: 10:00 AM - 4:00 PM</p>
+                <p style={contactTextStyles}>Sunday: Closed</p>
               </div>
             </div>
           </motion.div>
 
           <motion.div style={contactFormStyles} variants={itemVariants}>
             <h2 style={formTitleStyles}>Send us a message</h2>
-            <form style={formStyles}>
+            <form style={formStyles} onSubmit={handleSubmit}>
               <div style={formGroupStyles}>
                 <label htmlFor="name" style={labelStyles}>
-                  Name
+                  Name *
                 </label>
-                <input type="text" id="name" style={inputStyles} />
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  style={inputStyles} 
+                  required
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
               </div>
 
               <div style={formGroupStyles}>
                 <label htmlFor="email" style={labelStyles}>
-                  Email
+                  Email *
                 </label>
-                <input type="email" id="email" style={inputStyles} />
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  style={inputStyles} 
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
               </div>
 
               <div style={formGroupStyles}>
                 <label htmlFor="phone" style={labelStyles}>
                   Phone
                 </label>
-                <input type="tel" id="phone" style={inputStyles} />
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone"
+                  style={inputStyles}
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                />
               </div>
 
               <div style={formGroupStyles}>
                 <label htmlFor="subject" style={labelStyles}>
-                  Subject
+                  Subject *
                 </label>
-                <input type="text" id="subject" style={inputStyles} />
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject"
+                  style={inputStyles} 
+                  required
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                />
               </div>
 
               <div style={formGroupStyles}>
                 <label htmlFor="message" style={labelStyles}>
-                  Message
+                  Message *
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
-                  style={textareaStyles}
+                  style={inputStyles}
+                  required
+                  value={formData.message}
+                  onChange={handleInputChange}
                 ></textarea>
               </div>
 
-              <button type="submit" style={submitBtnStyles}>
-                Send Message
+              {submitStatus && (
+                <div style={statusMessageStyles}>
+                  {submitStatus}
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                style={{
+                  ...submitBtnStyles,
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                }}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>
@@ -221,6 +340,12 @@ const socialLinkStyles: React.CSSProperties = {
   transition: "color 0.3s ease",
 };
 
+const businessHoursStyles: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.5rem",
+};
+
 const contactFormStyles: React.CSSProperties = {
   backgroundColor: "#f8f8f8",
   padding: "2rem",
@@ -259,16 +384,7 @@ const inputStyles: React.CSSProperties = {
   borderRadius: "4px",
   fontSize: "1rem",
   backgroundColor: "#fff",
-};
-
-const textareaStyles: React.CSSProperties = {
-  padding: "0.75rem",
-  border: "1px solid #ddd",
-  borderRadius: "4px",
-  fontSize: "1rem",
-  backgroundColor: "#fff",
-  fontFamily: "inherit",
-  resize: "vertical",
+  transition: "border-color 0.3s ease",
 };
 
 const submitBtnStyles: React.CSSProperties = {
@@ -284,17 +400,19 @@ const submitBtnStyles: React.CSSProperties = {
   marginTop: "1rem",
 };
 
+const statusMessageStyles: React.CSSProperties = {
+  padding: "1rem",
+  borderRadius: "4px",
+  backgroundColor: "#e8f5e8",
+  color: "#2d5a2d",
+  fontSize: "0.9rem",
+  textAlign: "center",
+  marginTop: "1rem",
+};
+
 // Add responsive styles
 const mediaQueryStyles = `
   @media (max-width: 768px) {
-    .contact-title {
-      font-size: 2.5rem !important;
-    }
-    
-    .contact-container {
-      padding: 0 1rem !important;
-    }
-    
     .contact-content {
       grid-template-columns: 1fr !important;
       gap: 2rem !important;
@@ -302,6 +420,10 @@ const mediaQueryStyles = `
     
     .contact-form {
       padding: 1.5rem !important;
+    }
+    
+    .contact-title {
+      font-size: 2.5rem !important;
     }
   }
   
@@ -313,14 +435,23 @@ const mediaQueryStyles = `
     .section-title {
       font-size: 1.5rem !important;
     }
+    
+    .contact-container {
+      padding: 0 1rem !important;
+    }
   }
   
   .social-link:hover {
     color: #000 !important;
   }
   
-  .submit-btn:hover {
+  .submit-btn:hover:not(:disabled) {
     background-color: #333 !important;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #000 !important;
   }
 `;
 

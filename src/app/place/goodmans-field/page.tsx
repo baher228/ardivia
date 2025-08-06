@@ -42,6 +42,13 @@ const GoodmansFieldsPage = () => {
     },
   };
 
+  const galleryImages = [
+    "https://fabrikuk.com/wp-content/uploads/2023/05/Goodmans-7-10x7.jpg",
+    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/london/goodmans-fields/goodmans-fields-hero-2-1200x800.jpg",
+    "https://www.pcf-p.com/wp-content/uploads/2019/11/13015_N1_medium-1.jpg",
+    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/london/goodmans-fields/goodmans-fields-piazza-1200x800.jpg"
+  ];
+
   return (
     <motion.div
       className="min-h-screen bg-white pt-24"
@@ -91,7 +98,7 @@ const GoodmansFieldsPage = () => {
           variants={imageVariants}
         >
           <img
-            src="https://fabrikuk.com/wp-content/uploads/2023/05/Goodmans-7-10x7.jpg"
+            src={galleryImages[0]}
             alt="Goodman's Fields Development"
             className="w-full h-auto"
           />
@@ -103,18 +110,18 @@ const GoodmansFieldsPage = () => {
               Project Overview
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Goodman's Fields is a transformative mixed-use development that
+              Goodman's Fields is a transformative seven-acre mixed-use development that
               breathes new life into a historic area of Aldgate, East London.
               Our landscape architecture approach prioritizes creating vibrant
               public spaces that foster community interaction while respecting
-              the area's rich heritage.
+              the area's rich heritage. The project, designed by Lifschutz Davidson Sandilands and Murdoch Wickham, has established a new urban quarter with a mix of residential, commercial, and leisure uses.
             </p>
 
             <p className="text-lg text-gray-600 mb-6">
               The development seamlessly integrates private residential spaces
               with carefully curated public landscapes, featuring mature tree
               planting, seating areas, and flexible spaces that adapt to the
-              needs of residents and visitors throughout the day.
+              needs of residents and visitors throughout the day. The public realm includes a new piazza, a linear park, and a series of smaller gardens and courtyards, all interconnected by pedestrian-friendly streets and lanes.
             </p>
 
             <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
@@ -122,10 +129,10 @@ const GoodmansFieldsPage = () => {
             </h3>
             <p className="text-lg text-gray-600 mb-6">
               Our design philosophy centers on creating climate-resilient spaces
-              that contribute to the urban heat island effect mitigation while
+              that contribute to urban heat island effect mitigation while
               providing year-round interest through thoughtful plant selection.
               Native species and drought-resistant plants reduce maintenance
-              requirements and support local biodiversity.
+              requirements and support local biodiversity. The design also incorporates sustainable urban drainage systems (SuDS) to manage rainwater runoff and improve water quality.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
@@ -134,10 +141,11 @@ const GoodmansFieldsPage = () => {
                   Sustainability Features
                 </h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Rainwater harvesting systems</li>
+                  <li>Rainwater harvesting and SuDS</li>
                   <li>Permeable paving materials</li>
-                  <li>Native plant species selection</li>
-                  <li>Green roof installations</li>
+                  <li>Extensive native plant species selection</li>
+                  <li>Green roofs and living walls</li>
+                  <li>Locally sourced and recycled materials</li>
                 </ul>
               </div>
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -145,13 +153,26 @@ const GoodmansFieldsPage = () => {
                   Community Impact
                 </h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>New public gathering spaces</li>
-                  <li>Enhanced biodiversity corridors</li>
-                  <li>Improved air quality</li>
-                  <li>Increased property values</li>
+                  <li>New public gathering spaces and parks</li>
+                  <li>Enhanced biodiversity and green corridors</li>
+                  <li>Improved air and water quality</li>
+                  <li>Increased local property values</li>
+                  <li>Creation of a vibrant, walkable neighborhood</li>
                 </ul>
               </div>
             </div>
+            
+            <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
+              Project Gallery
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {galleryImages.map((src, index) => (
+                <motion.div key={index} variants={itemVariants} className="overflow-hidden rounded-lg">
+                  <img src={src} alt={`Goodman's Fields Gallery Image ${index + 1}`} className="w-full h-auto object-cover"/>
+                </motion.div>
+              ))}
+            </div>
+
           </motion.div>
 
           <motion.div className="lg:col-span-1" variants={itemVariants}>
@@ -170,11 +191,11 @@ const GoodmansFieldsPage = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Size</h4>
-                  <p className="text-gray-600">2.5 acres</p>
+                  <p className="text-gray-600">7 acres</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Client</h4>
-                  <p className="text-gray-600">ABC Developments Ltd</p>
+                  <p className="text-gray-600">Berkeley Group</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Services</h4>
@@ -194,14 +215,6 @@ const GoodmansFieldsPage = () => {
                     className="text-white hover:underline"
                   >
                     Whitehill and Bordon
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/place/kings-cross"
-                    className="text-white hover:underline"
-                  >
-                    King's Cross Development
                   </a>
                 </li>
                 <li>

@@ -16,14 +16,14 @@ const RecentProjectsSection: React.FC = () => {
         "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Edenbrook-Web-Photo-by-Studio-Maple-268.jpg",
       title: "Goodman's Fields",
       subtitle: "Aldgate, London",
-      link: "/portfolio/goodmans-fields",
+      link: "/place/goodmans-field",
     },
     {
       imageSrc:
         "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Reading-Greenpark-Web-224.jpg",
       title: "Whitehill and Bordon",
       subtitle: "Bordon, Hampshire",
-      link: "/portfolio/whitehill-and-bordon",
+      link: "/place/whitehill-and-bordon",
     },
   ];
 
@@ -32,7 +32,7 @@ const RecentProjectsSection: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>Recent projects</h2>
-          <a href="/places" className={styles.viewAllLink}>
+          <a href="/projects" className={styles.viewAllLink}>
             view all places →
           </a>
         </div>

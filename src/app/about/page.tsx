@@ -118,7 +118,7 @@ const AboutPage = () => {
           </div>
         </motion.div>
 
-        <motion.div className="mb-16" variants={itemVariants}>
+        {/**<motion.div className="mb-16" variants={itemVariants}>
           <h2 className="text-3xl font-medium text-gray-900 mb-8 text-center">
             Our Team
           </h2>
@@ -145,7 +145,7 @@ const AboutPage = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.div>**/}
 
         <motion.div
           className="text-center py-12 border-t border-gray-200"
@@ -166,14 +166,6 @@ const AboutPage = () => {
               whileTap={{ scale: 0.95 }}
             >
               Get in touch
-            </motion.a>
-            <motion.a
-              href="/careers"
-              className="px-8 py-3 bg-white text-gray-900 border border-gray-900 rounded-md text-lg font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Join our team
             </motion.a>
           </div>
         </motion.div>

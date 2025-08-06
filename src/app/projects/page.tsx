@@ -15,12 +15,13 @@ interface Project {
 
 const ProjectsPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All Projects");
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const projects: Project[] = [
+  const allProjects: Project[] = [
     {
       imageSrc:
         "https://fabrikuk.com/wp-content/uploads/2023/05/Goodmans-7-10x7.jpg",
@@ -56,9 +57,9 @@ const ProjectsPage = () => {
         "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Kings-Cross-Author-Web-49.jpg",
       title: "King's Cross Development",
       location: "London",
-      link: "/place/kings-cross",
+      link: "#",
       description:
-        "Contributing to one of London&apos;s most significant urban regeneration projects.",
+        "Contributing to one of London's most significant urban regeneration projects.",
       category: "Commercial",
     },
     {
@@ -66,7 +67,7 @@ const ProjectsPage = () => {
         "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Reading-Greenpark-Web-224.jpg",
       title: "Green Park Village",
       location: "Reading, Berkshire",
-      link: "/place/green-park-village",
+      link: "#",
       description:
         "Creating sustainable communities with integrated green infrastructure.",
       category: "Residential",
@@ -76,7 +77,7 @@ const ProjectsPage = () => {
         "https://fabrikuk.com/wp-content/uploads/2025/04/FCB-studios_Rotherhithe-Primary-School_London_©HuftonCrow_021-FCBS_WEB-10x5.jpg",
       title: "Rotherhithe Primary School",
       location: "London",
-      link: "/place/rotherhithe-school",
+      link: "#",
       description:
         "Award-winning school landscape design that puts learning in a garden setting.",
       category: "Education",
@@ -86,7 +87,7 @@ const ProjectsPage = () => {
         "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Wimbledon-Web-Photo-by-David-Lloyd-10x5.jpg",
       title: "Wimbledon Public Park",
       location: "London",
-      link: "/place/wimbledon-park",
+      link: "#",
       description:
         "Revitalizing a historic public park with new amenities while preserving its character.",
       category: "Public Realm",
@@ -96,7 +97,7 @@ const ProjectsPage = () => {
         "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Berkeley-Web-Photo-by-Daniel-Hardwick-10x5.jpg",
       title: "Berkeley Square Gardens",
       location: "London",
-      link: "/place/berkeley-gardens",
+      link: "#",
       description:
         "Luxury private gardens in the heart of Mayfair with sophisticated contemporary design.",
       category: "Residential",
@@ -111,47 +112,24 @@ const ProjectsPage = () => {
     "Public Realm",
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const projectItemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
+  const filteredProjects = allProjects.filter(project => 
+    activeCategory === "All Projects" || project.category === activeCategory
+  );
 
   return (
     <motion.div
       style={projectsPageStyles}
-      initial="hidden"
-      animate={isVisible ? "visible" : "hidden"}
-      variants={containerVariants}
+      initial={{ opacity: 0 }}
+      animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.6 }}
     >
       <div style={containerStyles}>
-        <motion.div style={heroSectionStyles} variants={itemVariants}>
+        <motion.div 
+          style={heroSectionStyles}
+          initial={{ y: 30, opacity: 0 }}
+          animate={isVisible ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           <h1 style={titleStyles}>Our Projects</h1>
           <p style={subtitleStyles}>
             Explore our portfolio of climate-resilient, sociable places that
@@ -159,14 +137,20 @@ const ProjectsPage = () => {
           </p>
         </motion.div>
 
-        <motion.div style={filterSectionStyles} variants={itemVariants}>
+        <motion.div 
+          style={filterSectionStyles}
+          initial={{ y: 20, opacity: 0 }}
+          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
           <div style={filterButtonsStyles}>
             {categories.map((category, index) => (
               <button
                 key={index}
+                onClick={() => setActiveCategory(category)}
                 style={{
                   ...filterButtonStyles,
-                  ...(category === "All Projects" ? activeFilterStyles : {}),
+                  ...(category === activeCategory ? activeFilterStyles : {}),
                 }}
               >
                 {category}
@@ -175,12 +159,15 @@ const ProjectsPage = () => {
           </div>
         </motion.div>
 
-        <motion.div style={projectsGridStyles} variants={itemVariants}>
-          {projects.map((project, index) => (
+        <div style={projectsGridStyles}>
+          {filteredProjects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               style={projectItemStyles}
-              variants={projectItemVariants}
+              initial={{ y: 50, opacity: 0 }}
+              animate={isVisible ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              layout
             >
               <SectionCard
                 imageSrc={project.imageSrc}
@@ -194,15 +181,20 @@ const ProjectsPage = () => {
               <div style={categoryTagStyles}>{project.category}</div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div style={ctaSectionStyles} variants={itemVariants}>
+        <motion.div 
+          style={ctaSectionStyles}
+          initial={{ y: 30, opacity: 0 }}
+          animate={isVisible ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
           <h2 style={ctaTitleStyles}>Have a project in mind?</h2>
           <p style={ctaTextStyles}>
-            We&apos;d love to hear about your vision and explore how we can help
+            We'd love to hear about your vision and explore how we can help
             create exceptional places together.
           </p>
-          <button style={primaryButtonStyles}>Get in touch</button>
+          <a href="/contact" style={primaryButtonStyles}>Get in touch</a>
         </motion.div>
       </div>
     </motion.div>
@@ -328,6 +320,7 @@ const ctaTextStyles: React.CSSProperties = {
 };
 
 const primaryButtonStyles: React.CSSProperties = {
+  display: "inline-block",
   padding: "0.75rem 2rem",
   backgroundColor: "#000",
   color: "#fff",
@@ -336,64 +329,8 @@ const primaryButtonStyles: React.CSSProperties = {
   fontSize: "0.9rem",
   fontWeight: "500",
   cursor: "pointer",
+  textDecoration: "none",
   transition: "background-color 0.3s ease",
 };
-
-// Add responsive styles
-const mediaQueryStyles = `
-  @media (max-width: 768px) {
-    .projects-title {
-      font-size: 2.5rem !important;
-    }
-    
-    .projects-container {
-      padding: 0 1rem !important;
-    }
-    
-    .projects-grid {
-      grid-template-columns: 1fr !important;
-      gap: 2rem !important;
-    }
-    
-    .filter-buttons {
-      gap: 0.5rem !important;
-    }
-    
-    .filter-button {
-      font-size: 0.8rem !important;
-      padding: 0.4rem 0.8rem !important;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .projects-title {
-      font-size: 2rem !important;
-    }
-    
-    .filter-buttons {
-      flex-direction: column !important;
-      align-items: center !important;
-    }
-  }
-  
-  .filter-button:hover {
-    background-color: #f0f0f0 !important;
-    border-color: #999 !important;
-  }
-  
-  .filter-button.active:hover {
-    background-color: #333 !important;
-  }
-  
-  .primary-button:hover {
-    background-color: #333 !important;
-  }
-`;
-
-if (typeof document !== "undefined") {
-  const styleElement = document.createElement("style");
-  styleElement.textContent = mediaQueryStyles;
-  document.head.appendChild(styleElement);
-}
 
 export default ProjectsPage;
