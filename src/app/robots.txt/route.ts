@@ -4,7 +4,7 @@ export async function GET() {
   const robotsTxt = `User-agent: *
 Allow: /
 
-Sitemap: https://viterra.com/sitemap.xml
+Sitemap: https://ardivia.com/sitemap.xml
 `;
 
   return new NextResponse(robotsTxt, {

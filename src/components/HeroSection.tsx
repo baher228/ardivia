@@ -58,8 +58,7 @@ const HeroSection: React.FC = () => {
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.3)",
         paddingTop: px(navHeight),
-        paddingLeft: "2rem",
-        paddingRight: "2rem",
+        paddingInline: "2rem",
       } as React.CSSProperties,
 
       twoColumnStyles: {
@@ -76,6 +75,7 @@ const HeroSection: React.FC = () => {
       } as React.CSSProperties,
 
       logoStyles: {
+        fontFamily: "var(--font-display)",
         fontSize: "4rem",
         fontWeight: 300,
         color: "#fff",
@@ -107,7 +107,7 @@ const HeroSection: React.FC = () => {
         margin: 0,
         maxWidth: "600px",
         textAlign: "left",
-        fontFamily: "Arial, sans-serif",
+        fontFamily: "var(--font-primary)",
       } as React.CSSProperties,
     };
   }, [navHeight]);

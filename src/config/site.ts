@@ -1,16 +1,16 @@
 export const siteConfig = {
-  name: "viterra",
+  name: "ardivia",
   description: "Professional landscaping services for beautiful outdoor spaces",
-  url: "https://viterra.com",
-  ogImage: "https://viterra.com/og.jpg",
+  url: "https://ardivia.com",
+  ogImage: "https://ardivia.com/og.jpg",
   links: {
-    twitter: "https://twitter.com/viterra",
-    facebook: "https://facebook.com/viterra",
-    instagram: "https://instagram.com/viterra",
+    twitter: "https://twitter.com/ardivia",
+    facebook: "https://facebook.com/ardivia",
+    instagram: "https://instagram.com/ardivia",
   },
   contact: {
     phone: "+1 (555) 123-4567",
-    email: "hello@viterra.com",
+    email: "hello@ardivia.com",
     address: "123 Garden Street, Green Valley, CA 90210",
   },
 };

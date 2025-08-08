@@ -26,7 +26,7 @@ const locations = [
   {
     city: "London",
     phone: "020 7620 1453",
-    email: "london@viterra.com",
+    email: "london@ardivia.com",
     address:
       "First Floor Studio, The Old School, 4 Exton Street, London SE1 8UE",
   },
@@ -38,9 +38,9 @@ const locations = [
 const currentYear = new Date().getFullYear();
 
 const social = [
-  { href: "https://instagram.com/viterra", label: "Instagram", Icon: Instagram },
-  { href: "https://linkedin.com/company/viterra", label: "LinkedIn", Icon: Linkedin },
-  { href: "https://facebook.com/viterra", label: "Facebook", Icon: Facebook },
+  { href: "https://instagram.com/ardivia", label: "Instagram", Icon: Instagram },
+  { href: "https://linkedin.com/company/ardivia", label: "LinkedIn", Icon: Linkedin },
+  { href: "https://facebook.com/ardivia", label: "Facebook", Icon: Facebook },
 ];
 
 // ────────────────────────────────────────────────────────────────────────────────
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
         {/* Column 1 – Brand */}
         <div className="md:col-span-2 xl:col-span-2 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-neutral-100">
-            viterra
+            ardivia
           </h2>
           <p className="text-sm md:text-base 2xl:text-lg leading-relaxed">
             Professional landscaping services creating beautiful outdoor
@@ -160,7 +160,7 @@ const Footer: React.FC = () => {
                      flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
         >
           <p className="text-xs md:text-sm text-neutral-400">
-            © {currentYear} viterra. All rights reserved.
+            © {currentYear} ardivia. All rights reserved.
           </p>
           <nav className="flex space-x-6">
             {[

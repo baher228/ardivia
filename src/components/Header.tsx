@@ -52,7 +52,7 @@ export default function Header() {
             020&nbsp;8940&nbsp;2832
           </a>
 
-          <a href="mailto:info@viterra.co.uk" className={styles.topLink}>
+          <a href="mailto:info@ardivia.co.uk" className={styles.topLink}>
             <span className={styles.iconCircle}>
               {/* envelope icon */}
               <svg
@@ -70,7 +70,7 @@ export default function Header() {
                 <polyline points="22,6 12,13 2,6" />
               </svg>
             </span>
-            info@viterra.co.uk
+            info@ardivia.co.uk
           </a>
         </div>
       </div>

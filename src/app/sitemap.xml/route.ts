@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { MetadataRoute } from "next";
 
 export async function GET() {
-  const baseUrl = "https://viterra.com";
+  const baseUrl = "https://ardivia.com";
 
   const staticPages = [
     "",
