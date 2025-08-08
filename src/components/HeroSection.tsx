@@ -9,6 +9,9 @@ const getNavHeight = (width: number): number => {
   return 96;
 };
 
+// Crop 30% total in Y: 15% from the top + 15% from the bottom.
+const CROP_TOP_BOTTOM_PERCENT = 15;
+
 const HeroSection: React.FC = () => {
   const [navHeight, setNavHeight] = useState<number>(0);
 
@@ -31,12 +34,15 @@ const HeroSection: React.FC = () => {
     titleStyles,
   } = useMemo(() => {
     const px = (n: number) => `${n}px`;
+    const crop = CROP_TOP_BOTTOM_PERCENT;
 
     return {
       heroStyles: {
         position: "relative",
-        marginTop: px(navHeight),
-        height: "100vh",
+        // Remove gap: do NOT push the section down with margin
+        marginTop: 0,
+        // Sit directly under the fixed/sticky header
+        height: `calc(100vh - 1.7*${px(navHeight)})`,
         overflow: "hidden",
       } as React.CSSProperties,
 
@@ -45,9 +51,13 @@ const HeroSection: React.FC = () => {
         top: 0,
         left: 0,
         width: "100%",
-        height: "100%",
+        // Enlarge by total crop (top+bottom = 30%) and shift up by top crop (15%)
+        height: `calc(100% + ${2 * crop}%)`,
+        transform: `translateY(-${crop}%)`,
         objectFit: "cover",
         zIndex: -1,
+        pointerEvents: "none",
+        // Important: no clip-path here; it caused the visible blank strip.
       } as React.CSSProperties,
 
       overlayStyles: {
@@ -57,7 +67,6 @@ const HeroSection: React.FC = () => {
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0,0,0,0.3)",
-        paddingTop: px(navHeight),
         paddingInline: "2rem",
       } as React.CSSProperties,
 
@@ -120,18 +129,12 @@ const HeroSection: React.FC = () => {
       transition={{ duration: 1 }}
     >
       {/* Video background */}
-      <video
-        style={videoStyles}
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
+      <video style={videoStyles} autoPlay muted loop playsInline>
         <source src="/videos/heroVideoHR.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay & content 
+      {/* Optional overlay & content
       <div style={overlayStyles}>
         <div style={twoColumnStyles}>
           <div style={leftColumnStyles}>
@@ -144,7 +147,8 @@ const HeroSection: React.FC = () => {
             </h1>
           </div>
         </div>
-      </div>*/}
+      </div>
+      */}
     </motion.section>
   );
 };

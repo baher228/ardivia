@@ -76,7 +76,7 @@
 .mainBar {
   height: 74px;
   transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
-  padding: 0 0rem;
+  padding: 0;
 }
 
 .header.scrolled .mainBar {
@@ -122,6 +122,7 @@
 
 /* ─────── mobile — keep the look, just scale down ─────── */
 @media (max-width: 768px) {
+  .header {padding-top: 1rem;}
   .logo { font-size: 2.4rem; }
   .header.scrolled .logo { font-size: 2.4rem; } /* no change on scroll for phones */
   .logoText { letter-spacing: 0.32rem; }
