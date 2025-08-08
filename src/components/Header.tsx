@@ -105,10 +105,7 @@ export default function Header() {
           </Link>
 
           {/* CTA duplicated so it’s reachable inside the panel */}
-          <a
-            href="/contact"
-            className={`${styles.ctaButton} ${styles.ctaMobile}`}
-          >
+          <a href="/contact" className={`${styles.ctaButton} ${styles.ctaMobile}`}>
             BOOK A FREE CONSULTATION
           </a>
         </nav>
@@ -123,9 +120,7 @@ export default function Header() {
             onClick={() => setNavOpen(!navOpen)}
             aria-label={navOpen ? "Close navigation" : "Open navigation"}
           >
-            <div
-              className={`${styles.hamburger} ${navOpen ? styles.active : ""}`}
-            >
+            <div className={`${styles.hamburger} ${navOpen ? styles.active : ""}`}>
               <span></span>
               <span></span>
               <span></span>

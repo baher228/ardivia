@@ -43,11 +43,12 @@ const GoodmansFieldsPage = () => {
   };
 
   const galleryImages = [
-    "https://fabrikuk.com/wp-content/uploads/2023/05/Goodmans-7-10x7.jpg",
-    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/london/goodmans-fields/goodmans-fields-hero-2-1200x800.jpg",
-    "https://www.pcf-p.com/wp-content/uploads/2019/11/13015_N1_medium-1.jpg",
-    "https://www.berkeleygroup.co.uk/-/media/berkeley-group/developments/london/goodmans-fields/goodmans-fields-piazza-1200x800.jpg"
+    "/photos/projects/goodmanFields/1.jpg",
+    "/photos/projects/goodmanFields/2.jpg",
+    "/photos/projects/goodmanFields/3.jpg",
+    "/photos/projects/goodmanFields/4.jpg",
   ];
+
 
   return (
     <motion.div

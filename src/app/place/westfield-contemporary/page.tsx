@@ -38,12 +38,10 @@ const WestfieldOutdoorLivingPage: React.FC = () => {
 
   // Stable, working image URLs (no placeholders)
   const galleryImages = [
-    "https://picsum.photos/id/1018/1600/900",
-    "https://picsum.photos/id/1025/1200/800",
-    "https://picsum.photos/id/1032/1200/800",
-    "https://picsum.photos/id/1043/1200/800",
-    "https://picsum.photos/id/1067/1200/800",
-    "https://picsum.photos/id/1056/1200/800",
+    "/photos/projects/westfieldContemporary/1.jpg",
+    "/photos/projects/westfieldContemporary/2.jpg",
+    "/photos/projects/westfieldContemporary/3.jpg",
+    "/photos/projects/westfieldContemporary/4.jpg",
   ];
 
   return (

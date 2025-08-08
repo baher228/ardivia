@@ -5,7 +5,7 @@ import styles from "./RecentProjectsSection.module.css";
 interface ProjectItem {
   imageSrc: string;
   title: string;
-  subtitle: string;
+  location: string;
   link: string;
 }
 
@@ -13,17 +13,17 @@ const RecentProjectsSection: React.FC = () => {
   const projectItems: ProjectItem[] = [
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Edenbrook-Web-Photo-by-Studio-Maple-268.jpg",
-      title: "Goodman's Fields",
-      subtitle: "Aldgate, London",
-      link: "/place/goodmans-field",
+        "/photos/projects/NovorizhskyResidence/1.jpg",
+      title: "Novorizhsky Residence Garden",
+      location: "Moscow",
+      link: "/place/novorizhsky-residence",
     },
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Reading-Greenpark-Web-224.jpg",
-      title: "Whitehill and Bordon",
-      subtitle: "Bordon, Hampshire",
-      link: "/place/whitehill-and-bordon",
+        "/photos/projects/westfieldContemporary/1.jpg",
+      title: "Westfield Contemporary Outdoor Living",
+      location: "Indiana",
+      link: "/place/westfield-contemporary",
     },
   ];
 
@@ -43,7 +43,7 @@ const RecentProjectsSection: React.FC = () => {
               <SectionCard
                 imageSrc={item.imageSrc}
                 title={item.title}
-                subtitle={item.subtitle}
+                subtitle={item.location}
                 link={item.link}
               />
             </div>

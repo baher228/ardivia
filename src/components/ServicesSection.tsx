@@ -46,12 +46,14 @@ const ServicesSection = () => {
 
   return (
     <section className="py-16 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-8 text-center">
-        <h2 className="text-2xl font-light text-gray-700 mb-12">
-          Ardivia Landscapes is an established landscape and garden design
-          company; building and maintaining gardens and outdoor spaces in London
-          and the Home Counties.
-        </h2>
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <header className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-light text-gray-800">
+            Ardivia is an established landscape and garden design
+            company; building and maintaining gardens and outdoor spaces in London
+            and the Home Counties.
+          </h2>
+        </header>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <ServiceCard

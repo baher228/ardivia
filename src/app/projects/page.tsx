@@ -20,11 +20,10 @@ const ProjectsPage = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-
-  const allProjects: Project[] = [
+{/** 
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2023/05/Goodmans-7-10x7.jpg",
+        "/photos/projects/goodmanFields/1.jpg",
       title: "Goodman's Fields",
       location: "Aldgate, London",
       link: "/place/goodmans-field",
@@ -51,57 +50,50 @@ const ProjectsPage = () => {
       description:
         "A new garden village that celebrates the natural landscape of the South Downs.",
       category: "Residential",
-    },
+    },*/}
+  const allProjects: Project[] = [
+    
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Kings-Cross-Author-Web-49.jpg",
-      title: "King's Cross Development",
-      location: "London",
-      link: "#",
+        "/photos/projects/NovorizhskyResidence/1.jpg",
+      title: "Novorizhsky Residence Garden",
+      location: "Moscow",
+      link: "/place/novorizhsky-residence",
       description:
-        "Contributing to one of London's most significant urban regeneration projects.",
-      category: "Commercial",
-    },
-    {
-      imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Reading-Greenpark-Web-224.jpg",
-      title: "Green Park Village",
-      location: "Reading, Berkshire",
-      link: "#",
-      description:
-        "Creating sustainable communities with integrated green infrastructure.",
+        "Minimalist landscape design featuring basalt rock accents, calm lawn panels, and structured planting for a serene private estate.",
       category: "Residential",
     },
     {
       imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/FCB-studios_Rotherhithe-Primary-School_London_©HuftonCrow_021-FCBS_WEB-10x5.jpg",
-      title: "Rotherhithe Primary School",
-      location: "London",
-      link: "#",
+        "/photos/projects/westfieldContemporary/1.jpg",
+      title: "Westfield Contemporary Outdoor Living",
+      location: "Indiana",
+      link: "/place/westfield-contemporary",
       description:
-        "Award-winning school landscape design that puts learning in a garden setting.",
-      category: "Education",
-    },
-    {
-      imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Wimbledon-Web-Photo-by-David-Lloyd-10x5.jpg",
-      title: "Wimbledon Public Park",
-      location: "London",
-      link: "#",
-      description:
-        "Revitalizing a historic public park with new amenities while preserving its character.",
-      category: "Public Realm",
-    },
-    {
-      imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Berkeley-Web-Photo-by-Daniel-Hardwick-10x5.jpg",
-      title: "Berkeley Square Gardens",
-      location: "London",
-      link: "#",
-      description:
-        "Luxury private gardens in the heart of Mayfair with sophisticated contemporary design.",
+        "Sunset-facing courtyard with floating cedar benches, a monolithic fire table, and drought-tolerant planting for year-round enjoyment.",
       category: "Residential",
     },
+    {
+      imageSrc:
+        "/photos/projects/outdoorKitchen/1.png",
+      title: "Lakeside Outdoor Kitchen & Fireplace",
+      location: "Lake Country, Wisconsin",
+      link: "/place/ourdoor-kitchen",
+      description:
+        "A fully equipped stone-and-steel cooking space with a modern brick fireplace, designed for seamless lakeside entertaining.",
+      category: "Residential",
+    },
+    {
+      imageSrc:
+        "/photos/projects/razdory/1.jpg",
+      title: "Razdory 2-3 Estate Gardens",
+      location: "Moscow",
+      link: "/place/razdory",
+      description:
+        "Elegant formal gardens framing a classical estate, featuring sculpted evergreens, seasonal blooms, and precisely edged lawns for a refined, timeless appeal.",
+      category: "Residential",
+    },
+    
   ];
 
   const categories = [
@@ -194,7 +186,23 @@ const ProjectsPage = () => {
             We'd love to hear about your vision and explore how we can help
             create exceptional places together.
           </p>
-          <a href="/contact" style={primaryButtonStyles}>Get in touch</a>
+          <motion.a
+  href="/contact"
+  style={primaryButtonStyles}
+  whileHover={{
+    scale: 1.05,
+    boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "#111"
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 300,
+    damping: 20
+  }}
+>
+  Get in touch
+</motion.a>
+
         </motion.div>
       </div>
     </motion.div>

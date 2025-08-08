@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const NovorizhskyResidencePage: React.FC = () => {
+const LakesideOutdoorKitchenPage: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => setIsVisible(true), []);
 
   const container = {
@@ -23,16 +22,11 @@ const NovorizhskyResidencePage: React.FC = () => {
     visible: { scale: 1, opacity: 1, transition: { duration: 0.7 } },
   };
 
-  // Real image URLs (no placeholders)
   const galleryImages = [
-    "https://picsum.photos/id/1003/1600/900", // hero-like facade/landscape
-    "https://picsum.photos/id/1011/1200/800",
-    "https://picsum.photos/id/1020/1200/800",
-    "https://picsum.photos/id/1036/1200/800",
-    "https://picsum.photos/id/1048/1200/800",
-    "https://picsum.photos/id/1050/1200/800",
-    "https://picsum.photos/id/106/1200/800",
-    "https://picsum.photos/id/1084/1200/800",
+    "/photos/projects/outdoorKitchen/1.png",
+    "/photos/projects/outdoorKitchen/2.png",
+    "/photos/projects/outdoorKitchen/3.png",
+    "/photos/projects/outdoorKitchen/4.png",
   ];
 
   return (
@@ -51,7 +45,7 @@ const NovorizhskyResidencePage: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Novorizhsky Residence Garden
+            Lakeside Outdoor Kitchen & Fireplace
           </motion.h1>
           <motion.p
             className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -59,8 +53,8 @@ const NovorizhskyResidencePage: React.FC = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            A minimalist landscape for a modern home: calm lawn panels, basalt
-            rock gardens, modular orchard & herb beds, and soft night lighting.
+            A fully equipped outdoor culinary and lounge space blending stone,
+            steel, and firelight—crafted for all-season lakeside living.
           </motion.p>
           <motion.div
             className="mt-4 flex flex-wrap justify-center gap-2"
@@ -69,104 +63,102 @@ const NovorizhskyResidencePage: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <span className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm">
-              Residential
+              Outdoor Kitchen
             </span>
             <span className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm">
-              Minimalist Garden
+              Hardscape
             </span>
             <span className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm">
-              Hardscape & Planting
+              Fireplace Design
             </span>
             <span className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm">
-              Fast-Track Delivery
+              Entertaining Space
             </span>
           </motion.div>
         </motion.div>
 
-        {/* Hero */}
+        {/* Hero image */}
         <motion.div className="mb-16 overflow-hidden rounded-lg" variants={imageFx}>
           <img
             src={galleryImages[0]}
-            alt="Novorizhsky Residence — minimalist facade and garden"
+            alt="Lakeside Outdoor Kitchen hero"
             className="w-full h-auto"
           />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Left column: Overview & Approach */}
+          {/* Left content */}
           <motion.div className="lg:col-span-2" variants={item}>
             <h2 className="text-3xl font-medium text-gray-900 mb-6">
               Project Overview
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              The Novorizhsky Residence sits on a 13-sotok plot (≈1,300&nbsp;m²).
-              The architecture is clean and restrained, so the landscape follows
-              suit: long lawn panels for quiet views, narrow ribbon beds with
-              cool-toned plantings, and a basalt gravel field punctuated by dark
-              boulders. Circulation is simple—stepping pavers guide movement,
-              while service paths are discreetly screened with evergreen blocks.
+              Situated on a serene lakeshore, this outdoor kitchen was designed
+              to host intimate dinners and large gatherings alike. A natural
+              stone veneer wraps the counters, which integrate professional-grade
+              stainless appliances including a gas grill, side burner, undercounter
+              refrigerator, and prep sink. The adjacent modern fireplace, clad in
+              dark brick, anchors a lounge zone that stays warm late into the
+              shoulder seasons.
             </p>
             <p className="text-lg text-gray-600 mb-6">
-              Night ambiance is created by recessed wall washes at the entrance,
-              low bollards along paths, and soft under-bench LEDs. A modular
-              kitchen-herb garden and compact orchard deliver seasonal produce
-              without clutter. The entire scope was designed, permitted, and
-              delivered on an accelerated schedule from May to July&nbsp;2024.
+              Oversized porcelain pavers form a seamless, low-maintenance floor
+              that withstands freeze-thaw cycles. The layout maximizes cooking
+              efficiency with dedicated zones for prep, cooking, plating, and
+              serving—while keeping the chef engaged with guests thanks to an
+              open-plan bar ledge.
             </p>
 
             <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
               Design Approach
             </h3>
             <p className="text-lg text-gray-600 mb-6">
-              We prioritized calm composition and easy maintenance: large shapes,
-              few materials, and reliable, cold-hardy species. Paving is kept to
-              stepping plates and crusher fines for permeability, while drainage
-              falls to hidden swales. Plant palettes favor silvers, whites, and
-              greens with seasonal lilac accents—echoing the home’s minimalist
-              palette and evening facade lighting.
+              The palette was selected for visual harmony with the lakeside
+              backdrop: greys, charcoals, and steel tones accented by warm
+              firelight. We ensured all materials are weather-resistant and easy
+              to clean. The fireplace is vented and fitted with a stainless
+              lintel, and its hearth doubles as casual seating. Integrated
+              lighting under counters and along paver joints allows the space to
+              transition effortlessly from daytime cooking to evening
+              entertaining.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h4 className="text-xl font-medium text-gray-900 mb-3">
-                  Site Facts
+                  Build Features
                 </h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Plot size: 13 sotok (≈1,300&nbsp;m²)</li>
-                  <li>Modern house in a strict minimalist style</li>
-                  <li>Built-in perimeter lighting & large glazing</li>
-                  <li>Quiet recreation lawn + shaded lounge</li>
-                  <li>Modular orchard & herb garden</li>
+                  <li>Stone veneer over CMU base with sealed joints</li>
+                  <li>Stainless steel gas grill, side burner & fridge</li>
+                  <li>Porcelain pavers on frost-protected slab</li>
+                  <li>Double-sided modern brick fireplace</li>
+                  <li>Integrated LED task & ambient lighting</li>
                 </ul>
               </div>
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h4 className="text-xl font-medium text-gray-900 mb-3">
-                  Tasks & Solutions
+                  Sustainability & Comfort
                 </h4>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Fast-track landscape build (May–July&nbsp;2024)</li>
-                  <li>Simple masterplan with clear zoning</li>
-                  <li>Muted entrance palette in greys/charcoal</li>
-                  <li>Minimal paving: stepping slabs + basalt screenings</li>
-                  <li>Natural stone accents: “Black Ice” and “Shungite” boulders</li>
-                  <li>
-                    Layered planting with long bloom: Hydrangea ‘Incrediball’,
-                    spirea, salvia, anaphalis, Festuca, Veronica spicata,
-                    boxwood, fescue lawn edges
-                  </li>
+                  <li>High-efficiency gas burners reduce fuel use</li>
+                  <li>Locally sourced stone & brick</li>
+                  <li>Permeable paver edges for stormwater management</li>
+                  <li>LED lighting 3 W/ft for low energy consumption</li>
+                  <li>Weather covers extend appliance lifespan</li>
                 </ul>
               </div>
             </div>
 
             <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
-              Photo Gallery
+              Project Gallery
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {galleryImages.slice(1).map((src, i) => (
                 <motion.div key={i} variants={item} className="overflow-hidden rounded-lg">
                   <img
                     src={src}
-                    alt={`Novorizhsky Residence gallery image ${i + 1}`}
+                    alt={`Lakeside Outdoor Kitchen gallery image ${i + 1}`}
                     className="w-full h-auto object-cover"
                   />
                 </motion.div>
@@ -174,7 +166,7 @@ const NovorizhskyResidencePage: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right column: Project Details */}
+          {/* Right content */}
           <motion.div className="lg:col-span-1" variants={item}>
             <div className="bg-gray-50 p-6 rounded-lg mb-8">
               <h3 className="text-2xl font-medium text-gray-900 mb-4">
@@ -183,15 +175,15 @@ const NovorizhskyResidencePage: React.FC = () => {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium text-gray-900">Location</h4>
-                  <p className="text-gray-600">Novorizhskoye Hwy, Moscow Region</p>
+                  <p className="text-gray-600">Lake Country, Wisconsin</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Completion</h4>
-                  <p className="text-gray-600">July 2024</p>
+                  <p className="text-gray-600">Autumn 2023</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900">Area</h4>
-                  <p className="text-gray-600">≈ 1,300 m² (13 sotok)</p>
+                  <h4 className="font-medium text-gray-900">Size</h4>
+                  <p className="text-gray-600">≈ 450 sq ft kitchen & lounge</p>
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900">Client</h4>
@@ -200,8 +192,12 @@ const NovorizhskyResidencePage: React.FC = () => {
                 <div>
                   <h4 className="font-medium text-gray-900">Services</h4>
                   <p className="text-gray-600">
-                    Landscape Concept, Planting Design, Lighting, Drainage, Build
+                    Outdoor Kitchen Design, Fireplace, Hardscape, Lighting
                   </p>
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-900">Budget</h4>
+                  <p className="text-gray-600">$78,000</p>
                 </div>
               </div>
             </div>
@@ -210,18 +206,18 @@ const NovorizhskyResidencePage: React.FC = () => {
               <h3 className="text-2xl font-medium mb-4">Related Projects</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="/place/lakehouse-minimal" className="text-white hover:underline">
-                    Lakehouse Minimal Garden
+                  <a href="/place/waterfront-firepit" className="text-white hover:underline">
+                    Waterfront Firepit Lounge
                   </a>
                 </li>
                 <li>
-                  <a href="/place/forest-edge" className="text-white hover:underline">
-                    Forest Edge Courtyard
+                  <a href="/place/stone-patio-grill" className="text-white hover:underline">
+                    Stone Patio Grill Station
                   </a>
                 </li>
                 <li>
-                  <a href="/place/white-brick-villa" className="text-white hover:underline">
-                    White Brick Villa Landscape
+                  <a href="/place/modern-backyard-retreat" className="text-white hover:underline">
+                    Modern Backyard Retreat
                   </a>
                 </li>
               </ul>
@@ -233,4 +229,4 @@ const NovorizhskyResidencePage: React.FC = () => {
   );
 };
 
-export default NovorizhskyResidencePage;
+export default LakesideOutdoorKitchenPage;
