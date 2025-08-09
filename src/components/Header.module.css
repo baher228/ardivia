@@ -20,14 +20,33 @@
 }
 
 /* ───────────── shared containers ───────────── */
-.topContainer,
-.mainBar {
+/* ───────────── shared containers ───────────── */
+.topContainer {
   max-width: 90%;
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
   align-items: center;
 }
+
+/* ───────────── main bar ───────────── */
+.mainBar {
+
+  height: 74px;
+  border: 0;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  padding: 0 2rem;  /* keep gutter; was 0 before */
+  display: flex;
+  align-items: center;
+  transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
+}
+
+.header.scrolled .mainBar {
+  height: 60px;
+  padding: 0 1rem;  /* keep a small gutter even when scrolled */
+}
+
 
 /* ───────────── top bar ───────────── */
 .topBar {
@@ -76,6 +95,7 @@
 .mainBar {
   height: 74px;
   transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
+  border: 0;
   padding: 0;
 }
 
