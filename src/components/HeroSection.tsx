@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const getNavHeight = (width: number): number => {
   if (width < 768) return 60;
-  if (width < 1500) return 74;
+  if (width < 1500) return 10;
   return 96;
 };
 
