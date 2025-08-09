@@ -22,9 +22,11 @@
 /* ───────────── shared containers ───────────── */
 /* ───────────── shared containers ───────────── */
 .topContainer {
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 0 2rem;
+  max-width: 100%;
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0 0rem;
   display: flex;
   align-items: center;
 }
@@ -70,7 +72,7 @@
 .topContainer {
   justify-content: flex-end;
   gap: 1rem;                 /* UPDATED: was 2rem, bring email & phone closer together */
-  padding: 0.2rem 1rem 0;    /* UPDATED: trim bottom padding to reduce visual gap */
+  padding: 0.2rem 1rem 0 0;    /* UPDATED: trim bottom padding to reduce visual gap */
 }
 
 .topLink {
@@ -284,15 +286,15 @@
 
 /* ───────────── NEW: tablet (medium) fixes ───────────── */
 /* This is the range that previously looked messy */
-@media (min-width: 769px) and (max-width: 1180px) {
+@media (min-width: 769px) and (max-width: 1580px) {
   .mainBar {
     height: 68px;
-    padding: 0 1.25rem;
+    padding: 0 1rem;
   }
 
   .logo {
-    font-size: 3rem;      /* smaller logo */
-    margin: 0;            /* kill the big bottom offset */
+    font-size: 2.9rem;      /* smaller logo */
+    margin-bottom: 0.5rem;            /* kill the big bottom offset */
   }
 
   .header.scrolled .logo {

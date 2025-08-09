@@ -45,7 +45,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="2xl:py-14 md:py-10  bg-gray-50">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         <header className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-light text-gray-800">
