@@ -8,6 +8,12 @@
   font-style: normal;
   font-display: swap;
 }
+/* @font-face {
+  font-family: "Open Sans";
+  src: url("./fonts/OpenSans-Variable.ttf") format("truetype");
+  font-style: normal;
+
+} */
 
 :root {
   --background: #ffffff;
@@ -22,7 +28,7 @@
   --gold: #d4af37;
   --soft-gold: #e6c35e;
   /* Fonts */
-  --font-primary: "Nimbus Sans", "Helvetica Neue", Arial, sans-serif; /* body and general text */
+ /* --font-primary: "Open Sans"; /* body and general text */
   --font-display: "Tenor Sans", serif; /* logo / brand display */
 
   /* Spacing */

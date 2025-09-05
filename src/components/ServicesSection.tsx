@@ -1,66 +1,53 @@
 import ServiceCard from "./ServiceCard";
 
-const DesignIcon = () => (
-  <svg
-    width="80"
-    height="80"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="white"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="18" y1="6" x2="6" y2="18"></line>
-    <line x1="6" y1="6" x2="18" y2="18"></line>
-  </svg>
-);
-
 const ServicesSection = () => {
   const services = [
     {
       imageSrc: "/photos/services/Design.jpg",
-      title: "DESIGN",
+      title: "GARDEN DESIGN",
       description:
-        "Innovative and inspirational designs created for private, residential gardens, roof terraces, commercial outside spaces and schools.",
+        "Crafting the perfect garden space. We will design a garden that suits your lifestyle.",
     },
     {
       imageSrc: "/photos/services/landscaping.jpg",
-      title: "LANDSCAPE ARCHITECTURE",
+      title: "PLANT SELECTION",
       description:
-        "Landscaping gardens and outdoor spaces to exacting standards for private residential clients, Garden Designers and Landscape Architects.",
+        "Hand-picked greenery for your oasis. Our experts select the right plants.",
     },
     {
       imageSrc: "/photos/services/garden.jpg",
-      title: "LANDSCAPING",
+      title: "HARDSCAPING",
       description:
-        "Garden maintenance for residential & commercial clients across London & the Home Counties. Ensuring your garden will look beautiful all year round.",
+        "Adding structure to your landscape. We create functional and aesthetic hardscape features.",
     },
     {
       imageSrc: "/photos/services/maintenance.jpg",
-      title: "MAINTENANCE",
+      title: "GARDEN IRRIGATION",
       description:
-        "Viterra Landscapes supplies Cane-line - stylish outdoor furniture to accessorise your garden and enjoy the great outdoors.",
+        "Keeping your garden vibrant all year long. Our irrigation systems guarantee the right care.",
     },
   ];
 
   return (
-    <section className="2xl:py-14 md:py-10  bg-gray-50">
+    <section className="bg-[#f5f7f3] 2xl:py-16 md:py-12 py-10">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <header className="text-center mb-12">
+      <header className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-light text-gray-800">
             Ardivia is an established landscape and garden design
             company; building and maintaining gardens and outdoor spaces in London
             and the Home Counties.
+
           </h2>
         </header>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
+
+        {/* 2×2 tile grid on desktop, stacked on mobile */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          {services.map((s, i) => (
             <ServiceCard
-              key={index}
-              imageSrc={service.imageSrc}
-              title={service.title}
-              description={service.description}
+              key={`${s.title}-${i}`}
+              imageSrc={s.imageSrc}
+              title={s.title}
+              description={s.description}
             />
           ))}
         </div>
