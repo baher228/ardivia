@@ -1,22 +1,11 @@
 /* ───────────── root header ───────────── */
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  position: static;            /* was fixed: header is no longer sticky */
   background: #fff;
   box-shadow: var(--shadow-light);
   padding-bottom: 0.5rem;
-  transform: translateY(0);
-  transition: transform 0.35s ease-in-out, box-shadow var(--transition-medium),
-    background-color 0.35s ease-in-out;
-}
-
-.header.scrolled {
-  box-shadow: var(--shadow-heavy);
-  padding-bottom: 0.3rem;
-  transform: translateY(-8px);
+  transition: box-shadow var(--transition-medium),
+              background-color 0.35s ease-in-out;
 }
 
 /* ───────────── shared containers ───────────── */
@@ -32,51 +21,38 @@
 
 /* ───────────── main bar ───────────── */
 .mainBar {
-
   height: 74px;
   border: 0;
   margin-left: 3rem;
   margin-right: 3rem;
-  padding: 0 2rem;  /* keep gutter; was 0 before */
+  padding: 0 2rem;  /* keep gutter */
   display: flex;
   align-items: center;
   transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
 }
+
 @media (max-width: 1500px){
   .mainBar{
     margin: 0 2rem;
   }
 }
 
-.header.scrolled .mainBar {
-  height: 60px;
-  padding: 0 1rem;  /* keep a small gutter even when scrolled */
-}
-
-
 /* ───────────── top bar ───────────── */
 .topBar {
   font-size: 0.9rem;
-  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out; /* UPDATED: added transform transition */
-  transform: translateY(10px); /* UPDATED: lower the email/phone row to sit closer to CTA */
-  margin-bottom: -8px;         /* UPDATED: visually tighten gap to main bar */
-}
-
-.header.scrolled .topBar {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(0); /* UPDATED: reset on scroll to avoid odd offsets while hidden */
+  transition: opacity 0.35s ease-in-out;
+  margin-bottom: -8px;
 }
 
 .topContainer {
   justify-content: flex-end;
-  gap: 1rem;                 /* UPDATED: was 2rem, bring email & phone closer together */
-  padding: 0.2rem 1rem 0 0;    /* UPDATED: trim bottom padding to reduce visual gap */
+  gap: 1rem;
+  padding: 0.2rem 1rem 0 0;
 }
 
 .topLink {
   display: flex;
-  margin-top: 0;             /* UPDATED: was 0.5rem; remove lift so they sit lower */
+  margin-top: 0;
   margin-bottom: 0.5rem;
   align-items: center;
   color: var(--primary-green);
@@ -94,10 +70,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0.25rem;     /* UPDATED: slightly tighter to compact the chip */
+  margin-right: 0.25rem;
 }
 
-/* ───────────── main bar ───────────── */
+/* ───────────── main bar (no scrolled shrink) ───────────── */
 .mainBar {
   height: 74px;
   transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
@@ -105,55 +81,40 @@
   padding: 0;
 }
 
-.header.scrolled .mainBar {
-  height: 60px;
-  padding: 0 0rem;
-}
-
 /* logo */
 /* ───────── LOGO: match the ARDIVIA wordmark ───────── */
 .logo {
-  /* size & alignment */
-  font-size: 3.3rem;          /* big on desktop */
+  font-size: 3.3rem;
   line-height: 1;
   letter-spacing: 0rem;
-  margin-bottom: 1rem;        /* remove artificial bottom shift */
-  color: #151515;             /* solid black like the image */
+  margin-bottom: 1rem;
+  color: #151515;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   transition: font-size 0.35s ease-in-out, color var(--transition-medium);
 }
 
-/* shrink on scroll, keep alignment tight */
-.header.scrolled .logo {
-  font-size: 3rem;
-}
-
-/* actual wordmark styling */
 .logoText {
   font-family: var(--font-display, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial);
-  font-weight: 600;           /* sturdy strokes */
-  text-transform: uppercase;  /* ‘ARDIVIA’ */
-  letter-spacing: 0.2rem;    /* wide tracking like the image */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
   display: block;
 }
 
-/* ─────── tablet range (prevents wrapping and keeps proportions) ─────── */
+/* ─────── tablet range ─────── */
 @media (min-width: 769px) and (max-width: 1180px) {
   .logo { font-size: 3rem; }
-  .header.scrolled .logo { font-size: 2.4rem; }
   .logoText { letter-spacing: 0.42rem; }
 }
 
 /* ─────── mobile — keep the look, just scale down ─────── */
 @media (max-width: 768px) {
-  .header {padding-top: 1rem;}
+  .header { padding-top: 1rem; }
   .logo { font-size: 2.4rem; }
-  .header.scrolled .logo { font-size: 2.4rem; } /* no change on scroll for phones */
   .logoText { letter-spacing: 0.32rem; }
 }
-
 
 /* nav links */
 .nav {
@@ -161,10 +122,6 @@
   gap: 2rem;
   margin-left: auto;
   transition: gap 0.35s ease-in-out;
-}
-
-.header.scrolled .nav {
-  gap: 1.5rem;
 }
 
 .navLink {
@@ -176,11 +133,13 @@
   padding: 0.5rem 0;
   transition: color var(--transition-medium);
 }
+
 @media (max-width: 1500px){
   .navLink{
     font-size: 1.5rem;
   }
 }
+
 .navLink::after {
   content: "";
   position: absolute;
@@ -205,10 +164,6 @@
   transition: gap 0.35s ease-in-out;
 }
 
-.header.scrolled .actions {
-  gap: 1rem;
-}
-
 /* CTA buttons */
 .ctaButton,
 .ctaMobile {
@@ -221,8 +176,8 @@
   text-decoration: none;
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
   transition: all var(--transition-medium);
-  white-space: nowrap;           /* keep the long label on one line */
-  line-height: 1;                /* avoid extra vertical height on medium */
+  white-space: nowrap;
+  line-height: 1;
 }
 
 /* desktop default: only .ctaButton shows */
@@ -284,7 +239,6 @@
 }
 
 /* ───────────── NEW: tablet (medium) fixes ───────────── */
-/* This is the range that previously looked messy */
 @media (min-width: 769px) and (max-width: 1580px) {
   .mainBar {
     height: 68px;
@@ -292,21 +246,16 @@
   }
 
   .logo {
-    font-size: 2.9rem;      /* smaller logo */
-    margin-bottom: 0.5rem;            /* kill the big bottom offset */
-  }
-
-  .header.scrolled .logo {
-    font-size: 2.4rem;    /* compact on scroll */
-    margin: 0;
+    font-size: 2.9rem;
+    margin-bottom: 0.5rem;
   }
 
   .nav {
-    gap: 1.25rem;         /* tighter spacing */
+    gap: 1.25rem;
   }
 
   .navLink {
-    font-size: 1.15rem;   /* smaller nav text so it stays on one line */
+    font-size: 1.15rem;
     padding: 0.4rem 0;
   }
 
@@ -316,28 +265,22 @@
   }
 
   .ctaButton {
-    padding: 0.6rem 1.2rem;   /* slimmer CTA so it doesn’t push layout */
+    padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
 }
 
 /* ───────────── mobile tweaks ───────────── */
 @media (max-width: 768px) {
-  /* cancel the scroll shrink/shift on phones */
-  .header.scrolled {
-    transform: none;
-    box-shadow: var(--shadow-light);
-  }
-
   .topBar {
-    display: none; /* unchanged: contacts hide on mobile panel; the CTA appears inside panel */
+    display: none;
   }
 
   /* ——— base mobile header ——— */
   .mainBar {
     height: 60px;
     padding: 0 1rem;
-    justify-content: space-between;      /* logo left, burger right */
+    justify-content: space-between; /* logo left, burger right */
   }
 
   .logo {
@@ -349,18 +292,6 @@
   .actions {
     margin-left: 0;
     gap: 1rem;
-  }
-
-  /* ——— override “scrolled” tweaks for mobiles ——— */
-  .header.scrolled .mainBar {
-    height: 60px;                        /* keep same height */
-    padding: 0 1rem;                     /* keep tight padding */
-    justify-content: space-between;
-  }
-
-  .header.scrolled .logo {
-    font-size: 2.5rem;                   /* stay compact */
-    margin: 0;                           /* no extra left shift */
   }
 
   /* off-canvas nav panel */

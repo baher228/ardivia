@@ -6,15 +6,7 @@ import styles from "./Header.module.css";
 import { siteConfig } from "../config/site";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
-
-  /* ─── fade header on scroll ─── */
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   /* ─── lock page when menu is open ─── */
   useEffect(() => {
@@ -24,11 +16,7 @@ export default function Header() {
   const closeNav = () => setNavOpen(false);
 
   return (
-    <header
-      className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${
-        navOpen ? styles.navOpen : ""
-      }`}
-    >
+    <header className={`${styles.header} ${navOpen ? styles.navOpen : ""}`}>
       {/* ───── top bar (phone & email) ───── */}
       <div className={styles.topBar}>
         <div className={styles.topContainer}>
