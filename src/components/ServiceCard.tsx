@@ -44,7 +44,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <p className="text-gray-600 mb-4">{description}</p>
         <a
           href="#"
-          className="text-green-700 font-semibold hover:text-green-600 transition-colors duration-300"
+          className="text-[#2C5F34] font-semibold hover:text-green-700 transition-colors duration-300"
         >
           SEE MORE
         </a>
