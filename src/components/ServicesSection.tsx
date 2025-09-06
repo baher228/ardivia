@@ -32,7 +32,7 @@ const ServicesSection = () => {
     <section className="bg-[#f5f7f3] 2xl:py-16 md:py-12 py-10">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
       <header className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-light text-gray-800">
+          <h2 className="text-xl md:text-3xl font-light text-gray-800">
             Ardivia is an established landscape and garden design
             company; building and maintaining gardens and outdoor spaces in London
             and the Home Counties.

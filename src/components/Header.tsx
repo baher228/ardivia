@@ -69,8 +69,8 @@ export default function Header() {
           <span className={styles.logoText}>{siteConfig.name}</span>
         </Link>
 
-        <nav className={styles.nav}>
-          {/* close “×” only visible on mobile */}
+        <nav className={styles.nav} aria-hidden={!navOpen}>
+          {/* close “×” only visible on small screens in CSS, but panel works on all sizes */}
           <button
             className={styles.closeNav}
             onClick={closeNav}
@@ -106,9 +106,11 @@ export default function Header() {
           <button
             className={styles.menuToggle}
             onClick={() => setNavOpen(!navOpen)}
+            aria-expanded={navOpen}
             aria-label={navOpen ? "Close navigation" : "Open navigation"}
           >
-            <div className={`${styles.hamburger} ${navOpen ? styles.active : ""}`}>
+            {/* Always 3 lines; no “X” transform */}
+            <div className={styles.hamburger}>
               <span></span>
               <span></span>
               <span></span>
