@@ -51,6 +51,7 @@ const cardStyles: React.CSSProperties = {
   overflow: "hidden",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   cursor: "pointer",
+  borderRadius: 16, /* gives the larger cards a softer look */
 };
 
 const cardLinkStyles: React.CSSProperties = {
@@ -62,8 +63,9 @@ const cardLinkStyles: React.CSSProperties = {
 const imageContainerStyles: React.CSSProperties = {
   position: "relative",
   width: "100%",
-  paddingBottom: "60%", // 5:3 aspect ratio
+  paddingBottom: "66.6667%", // taller (3:2) to make the card feel larger
   overflow: "hidden",
+  borderRadius: 16,
 };
 
 const imageStyles: React.CSSProperties = {
@@ -77,29 +79,30 @@ const imageStyles: React.CSSProperties = {
 };
 
 const contentStyles: React.CSSProperties = {
-  padding: "1rem 0",
+  padding: "1.25rem 0 0.25rem",
 };
 
 const categoryStyles: React.CSSProperties = {
   fontSize: "12px",
-  color: "#666",
-  marginBottom: "0.25rem",
+  color: "#D9D9D9",
+  marginBottom: "0.3rem",
   fontWeight: 600,
   textTransform: "uppercase",
+  letterSpacing: "0.06em",
 };
 
 const subtitleStyles: React.CSSProperties = {
-  fontSize: "14px",
-  color: "#666",
-  marginBottom: "0.25rem",
+  fontSize: "15px",
+  color: "#EAEAEA",
+  marginBottom: "0.35rem",
   fontWeight: 400,
 };
 
 const titleStyles: React.CSSProperties = {
-  fontSize: "28px",
+  fontSize: "34px", // increased title size
   fontWeight: 400,
-  color: "#212121",
-  lineHeight: 1.2,
+  color: "white",
+  lineHeight: 1.18,
   margin: 0,
 };
 
