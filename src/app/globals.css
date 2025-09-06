@@ -8,12 +8,13 @@
   font-style: normal;
   font-display: swap;
 }
-/* @font-face {
+@font-face {
   font-family: "Open Sans";
-  src: url("./fonts/OpenSans-Variable.ttf") format("truetype");
+  src: url("/fonts/OpenSans-Variable.ttf") format("truetype");
+  font-weight: 100 900; /* variable font range */
   font-style: normal;
-
-} */
+  font-display: swap;
+}
 
 :root {
   --background: #ffffff;
@@ -28,7 +29,7 @@
   --gold: #d4af37;
   --soft-gold: #e6c35e;
   /* Fonts */
- /* --font-primary: "Open Sans"; /* body and general text */
+ --font-primary: "Open Sans", sans-serif;  /* body and general text */
   --font-display: "Tenor Sans", serif; /* logo / brand display */
 
   /* Spacing */

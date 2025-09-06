@@ -4,27 +4,27 @@ const ServicesSection = () => {
   const services = [
     {
       imageSrc: "/photos/services/Design.jpg",
-      title: "GARDEN DESIGN",
+      title: "DESIGN",
       description:
-        "Crafting the perfect garden space. We will design a garden that suits your lifestyle.",
+        "Innovative and inspirational designs created for private, residential gardens, roof terraces, commercial outside spaces and schools.",
     },
     {
       imageSrc: "/photos/services/landscaping.jpg",
-      title: "PLANT SELECTION",
+      title: "LANDSCAPE ARCHITECTURE",
       description:
-        "Hand-picked greenery for your oasis. Our experts select the right plants.",
+        "Landscaping gardens and outdoor spaces to exacting standards for private residential clients, Garden Designers and Landscape Architects.",
     },
     {
       imageSrc: "/photos/services/garden.jpg",
-      title: "HARDSCAPING",
+      title: "FURNITURE",
       description:
-        "Adding structure to your landscape. We create functional and aesthetic hardscape features.",
+        "Garden maintenance for residential & commercial clients across London & the Home Counties. Ensuring your garden will look beautiful all year round.",
     },
     {
       imageSrc: "/photos/services/maintenance.jpg",
-      title: "GARDEN IRRIGATION",
+      title: "MAINTENANCE",
       description:
-        "Keeping your garden vibrant all year long. Our irrigation systems guarantee the right care.",
+        "Viterra Landscapes supplies Cane-line - stylish outdoor furniture to accessorise your garden and enjoy the great outdoors.",
     },
   ];
 
