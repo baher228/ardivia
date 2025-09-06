@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import SectionCard from "@/components/SectionCard";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-interface Project {
+type Project = {
   imageSrc: string;
   title: string;
   location: string;
   link: string;
   description?: string;
   category: string;
-}
+  year: number;
+  service: string;
+};
 
 const ProjectsPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,325 +22,372 @@ const ProjectsPage = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-{/** 
-    {
-      imageSrc:
-        "/photos/projects/goodmanFields/1.jpg",
-      title: "Goodman's Fields",
-      location: "Aldgate, London",
-      link: "/place/goodmans-field",
-      description:
-        "A vibrant mixed-use development creating new public spaces in the heart of London.",
-      category: "Residential",
-    },
-    {
-      imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2023/05/Places-WhitehillBordon-thumb-10x6.jpg",
-      title: "Whitehill and Bordon",
-      location: "Bordon, Hampshire",
-      link: "/place/whitehill-and-bordon",
-      description:
-        "Transforming a former military town into a sustainable community for the future.",
-      category: "Residential",
-    },
-    {
-      imageSrc:
-        "https://fabrikuk.com/wp-content/uploads/2025/04/Fabrik-Edenbrook-Web-Photo-by-Studio-Maple-268.jpg",
-      title: "Edenbrook Village",
-      location: "Alton, Hampshire",
-      link: "/place/edenbrook-village",
-      description:
-        "A new garden village that celebrates the natural landscape of the South Downs.",
-      category: "Residential",
-    },*/}
+
   const allProjects: Project[] = [
-    
     {
-      imageSrc:
-        "/photos/projects/NovorizhskyResidence/1.jpg",
+      imageSrc: "/photos/projects/NovorizhskyResidence/1.jpg",
       title: "Novorizhsky Residence Garden",
       location: "Moscow",
       link: "/place/novorizhsky-residence",
       description:
         "Minimalist landscape design featuring basalt rock accents, calm lawn panels, and structured planting for a serene private estate.",
       category: "Residential",
+      year: 2023,
+      service: "Private Garden Design",
     },
     {
-      imageSrc:
-        "/photos/projects/westfieldContemporary/1.jpg",
+      imageSrc: "/photos/projects/westfieldContemporary/1.jpg",
       title: "Westfield Contemporary Outdoor Living",
       location: "Indiana",
       link: "/place/westfield-contemporary",
       description:
         "Sunset-facing courtyard with floating cedar benches, a monolithic fire table, and drought-tolerant planting for year-round enjoyment.",
       category: "Residential",
+      year: 2024,
+      service: "Outdoor Living Design",
     },
     {
-      imageSrc:
-        "/photos/projects/outdoorKitchen/1.png",
+      imageSrc: "/photos/projects/outdoorKitchen/1.png",
       title: "Lakeside Outdoor Kitchen & Fireplace",
       location: "Lake Country, Wisconsin",
       link: "/place/ourdoor-kitchen",
       description:
         "A fully equipped stone-and-steel cooking space with a modern brick fireplace, designed for seamless lakeside entertaining.",
       category: "Residential",
+      year: 2022,
+      service: "Outdoor Kitchen & Fireplace",
     },
     {
-      imageSrc:
-        "/photos/projects/razdory/1.jpg",
+      imageSrc: "/photos/projects/razdory/1.jpg",
       title: "Razdory 2-3 Estate Gardens",
       location: "Moscow",
       link: "/place/razdory",
       description:
         "Elegant formal gardens framing a classical estate, featuring sculpted evergreens, seasonal blooms, and precisely edged lawns for a refined, timeless appeal.",
       category: "Residential",
+      year: 2023,
+      service: "Estate Garden Design",
     },
-    
   ];
 
-  const categories = [
-    "All Projects",
-    "Residential",
-    "Commercial",
-    "Education",
-    "Public Realm",
-  ];
+  const categories = ["All Projects", "Residential", "Commercial", "Education", "Public Realm"];
 
-  const filteredProjects = allProjects.filter(project => 
-    activeCategory === "All Projects" || project.category === activeCategory
+  const filtered = allProjects.filter(
+    (p) => activeCategory === "All Projects" || p.category === activeCategory
   );
 
   return (
     <motion.div
-      style={projectsPageStyles}
+      style={page}
       initial={{ opacity: 0 }}
       animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div style={containerStyles}>
-        <motion.div 
-          style={heroSectionStyles}
+      <div style={container}>
+        {/* Hero */}
+        <motion.div
+          style={hero}
           initial={{ y: 30, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.05 }}
         >
-          <h1 style={titleStyles}>Our Projects</h1>
-          <p style={subtitleStyles}>
-            Explore our portfolio of climate-resilient, sociable places that
-            bring communities together.
+          <h1 style={heroTitle}>Our Projects</h1>
+          <p style={heroSubtitle}>
+            Explore our portfolio of climate-resilient, sociable places that bring communities together.
           </p>
         </motion.div>
 
-        <motion.div 
-          style={filterSectionStyles}
+        {/* Filters */}
+        <motion.div
+          style={filtersWrap}
           initial={{ y: 20, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <div style={filterButtonsStyles}>
-            {categories.map((category, index) => (
+          <div style={filters}>
+            {categories.map((c) => (
               <button
-                key={index}
-                onClick={() => setActiveCategory(category)}
+                key={c}
+                onClick={() => setActiveCategory(c)}
                 style={{
-                  ...filterButtonStyles,
-                  ...(category === activeCategory ? activeFilterStyles : {}),
+                  ...filterBtn,
+                  ...(c === activeCategory ? activeFilterBtn : {}),
                 }}
               >
-                {category}
+                {c}
               </button>
             ))}
           </div>
         </motion.div>
 
-        <div style={projectsGridStyles}>
-          {filteredProjects.map((project, index) => (
+        {/* LIST — like the reference image */}
+        <div style={list}>
+          {filtered.map((p, idx) => (
             <motion.div
-              key={project.title}
-              style={projectItemStyles}
-              initial={{ y: 50, opacity: 0 }}
-              animate={isVisible ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              layout
+              key={p.title}
+              initial={{ y: 40, opacity: 0 }}
+              animate={isVisible ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 + idx * 0.05 }}
             >
-              <SectionCard
-                imageSrc={project.imageSrc}
-                title={project.title}
-                subtitle={project.location}
-                link={project.link}
-              />
-              {project.description && (
-                <p style={projectDescriptionStyles}>{project.description}</p>
-              )}
-              <div style={categoryTagStyles}>{project.category}</div>
+              <Link href={p.link} style={{ textDecoration: "none" }}>
+                <article style={row}>
+                  <div style={thumbWrap}>
+                    <img src={p.imageSrc} alt={p.title} style={thumb} />
+                  </div>
+
+                  <div style={rightCol}>
+                    <h2 style={rowTitle}>{p.title}</h2>
+
+                    <div style={metaGrid}>
+                      <div style={metaBlock}>
+                        <div style={metaLabel}>Year</div>
+                        <div style={metaValue}>{p.year}</div>
+                      </div>
+                      <div style={metaBlock}>
+                        <div style={metaLabel}>Location</div>
+                        <div style={metaValue}>{p.location}</div>
+                      </div>
+                      <div style={metaBlock}>
+                        <div style={metaLabel}>Service</div>
+                        <div style={metaValue}>{p.service}</div>
+                      </div>
+                    </div>
+
+                    {p.description && <p style={desc}>{p.description}</p>}
+                  </div>
+                </article>
+              </Link>
             </motion.div>
           ))}
         </div>
 
-        <motion.div 
-          style={ctaSectionStyles}
+        {/* CTA */}
+        <motion.div
+          style={cta}
           initial={{ y: 30, opacity: 0 }}
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2 style={ctaTitleStyles}>Have a project in mind?</h2>
-          <p style={ctaTextStyles}>
-            We'd love to hear about your vision and explore how we can help
-            create exceptional places together.
+          <h3 style={ctaTitle}>Have a project in mind?</h3>
+          <p style={ctaText}>
+            We'd love to hear about your vision and explore how we can help create exceptional places together.
           </p>
           <motion.a
-  href="/contact"
-  style={primaryButtonStyles}
-  whileHover={{
-    scale: 1.05,
-    boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
-    backgroundColor: "#111"
-  }}
-  transition={{
-    type: "spring",
-    stiffness: 300,
-    damping: 20
-  }}
->
-  Get in touch
-</motion.a>
-
+            href="/contact"
+            style={ctaBtn}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+              backgroundColor: "#111",
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          >
+            Get in touch
+          </motion.a>
         </motion.div>
       </div>
     </motion.div>
   );
 };
 
-const projectsPageStyles: React.CSSProperties = {
+/* ============ Styles (inline to match your current approach) ============ */
+
+const page: React.CSSProperties = {
   paddingTop: "120px",
   minHeight: "100vh",
-  backgroundColor: "#fff",
+  backgroundColor: "#FAFBF9",
 };
 
-const containerStyles: React.CSSProperties = {
+const container: React.CSSProperties = {
   maxWidth: "1200px",
   margin: "0 auto",
   padding: "0 2rem",
 };
 
-const heroSectionStyles: React.CSSProperties = {
+const hero: React.CSSProperties = {
   textAlign: "center",
-  marginBottom: "3rem",
+  marginBottom: "2.5rem",
 };
 
-const titleStyles: React.CSSProperties = {
-  fontSize: "3.5rem",
-  fontWeight: "300",
-  color: "#000",
-  marginBottom: "1rem",
+const heroTitle: React.CSSProperties = {
+  fontSize: "3.25rem",
+  fontWeight: 300,
   letterSpacing: "-0.02em",
+  margin: 0,
+  color: "#0A0A0A",
 };
 
-const subtitleStyles: React.CSSProperties = {
-  fontSize: "1.25rem",
-  color: "#666",
-  fontWeight: "400",
-  lineHeight: "1.6",
-  maxWidth: "700px",
-  margin: "0 auto",
+const heroSubtitle: React.CSSProperties = {
+  fontSize: "1.15rem",
+  color: "#606462",
+  maxWidth: 720,
+  margin: "0.85rem auto 0",
+  lineHeight: 1.6,
 };
 
-const filterSectionStyles: React.CSSProperties = {
-  marginBottom: "3rem",
+const filtersWrap: React.CSSProperties = {
+  marginBottom: "2.25rem",
   display: "flex",
   justifyContent: "center",
 };
 
-const filterButtonsStyles: React.CSSProperties = {
+const filters: React.CSSProperties = {
   display: "flex",
-  gap: "1rem",
+  gap: "0.75rem",
   flexWrap: "wrap",
   justifyContent: "center",
 };
 
-const filterButtonStyles: React.CSSProperties = {
-  padding: "0.5rem 1rem",
+const filterBtn: React.CSSProperties = {
+  padding: "8px 14px",
   backgroundColor: "transparent",
-  color: "#666",
-  border: "1px solid #ddd",
-  borderRadius: "20px",
-  fontSize: "0.9rem",
+  color: "#4F5552",
+  border: "1px solid #DDE2DB",
+  borderRadius: 999,
+  fontSize: "0.92rem",
   cursor: "pointer",
-  transition: "all 0.3s ease",
+  transition: "all .2s ease",
 };
 
-const activeFilterStyles: React.CSSProperties = {
-  backgroundColor: "#000",
-  color: "#fff",
-  borderColor: "#000",
+const activeFilterBtn: React.CSSProperties = {
+  backgroundColor: "#0A0A0A",
+  color: "#FFFFFF",
+  borderColor: "#0A0A0A",
 };
 
-const projectsGridStyles: React.CSSProperties = {
+const list: React.CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
-  gap: "3rem",
-  marginBottom: "4rem",
+  gap: "22px",
+  marginBottom: "56px",
 };
 
-const projectItemStyles: React.CSSProperties = {
+const row: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "360px 1fr",
+  gap: "28px",
+  alignItems: "center",
+  background: "#F4F6F3",
+  border: "1px solid #E5E9E3",
+  borderRadius: "16px",
+  padding: "20px",
+} as const;
+
+const thumbWrap: React.CSSProperties = {
+  width: "100%",
+  height: "0",
+  paddingBottom: "66.666%", // 3:2 aspect
   position: "relative",
-};
-
-const projectDescriptionStyles: React.CSSProperties = {
-  fontSize: "0.95rem",
-  color: "#666",
-  lineHeight: "1.6",
-  marginTop: "1rem",
-  padding: "0 1.5rem",
-};
-
-const categoryTagStyles: React.CSSProperties = {
-  position: "absolute",
-  top: "1rem",
-  right: "1rem",
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
-  color: "#fff",
-  padding: "0.25rem 0.75rem",
+  overflow: "hidden",
   borderRadius: "12px",
-  fontSize: "0.75rem",
-  fontWeight: "500",
 };
 
-const ctaSectionStyles: React.CSSProperties = {
+const thumb: React.CSSProperties = {
+  position: "absolute",
+  inset: 0,
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "block",
+  borderRadius: "12px",
+};
+
+const rightCol: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "14px",
+};
+
+const rowTitle: React.CSSProperties = {
+  fontSize: "2.25rem",
+  lineHeight: 1.1,
+  margin: 0,
+  color: "#233029",
+  letterSpacing: "-0.01em",
+  fontWeight: 700,
+};
+
+const metaGrid: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+  gap: "18px",
+  alignItems: "start",
+};
+
+const metaBlock: React.CSSProperties = {
+  display: "grid",
+  gap: "4px",
+};
+
+const metaLabel: React.CSSProperties = {
+  fontSize: "0.72rem",
+  textTransform: "uppercase",
+  letterSpacing: "0.08em",
+  color: "#728076",
+};
+
+const metaValue: React.CSSProperties = {
+  fontSize: "0.98rem",
+  color: "#233029",
+};
+
+const desc: React.CSSProperties = {
+  fontSize: "0.98rem",
+  color: "#415047",
+  lineHeight: 1.6,
+  marginTop: "6px",
+};
+
+const cta: React.CSSProperties = {
   textAlign: "center",
-  padding: "4rem 0",
-  borderTop: "1px solid #e0e0e0",
-  marginTop: "2rem",
+  padding: "48px 0 72px",
+  borderTop: "1px solid #E5E9E3",
+  marginTop: "6px",
 };
 
-const ctaTitleStyles: React.CSSProperties = {
+const ctaTitle: React.CSSProperties = {
   fontSize: "2rem",
-  fontWeight: "500",
-  color: "#000",
-  marginBottom: "1rem",
+  margin: 0,
+  color: "#0A0A0A",
+  fontWeight: 600,
 };
 
-const ctaTextStyles: React.CSSProperties = {
-  fontSize: "1.1rem",
-  color: "#666",
-  marginBottom: "2rem",
-  maxWidth: "600px",
-  margin: "0 auto 2rem",
-  lineHeight: "1.6",
+const ctaText: React.CSSProperties = {
+  fontSize: "1.05rem",
+  color: "#606462",
+  maxWidth: 640,
+  margin: "12px auto 24px",
+  lineHeight: 1.6,
 };
 
-const primaryButtonStyles: React.CSSProperties = {
+const ctaBtn: React.CSSProperties = {
   display: "inline-block",
-  padding: "0.75rem 2rem",
-  backgroundColor: "#000",
-  color: "#fff",
+  padding: "12px 22px",
+  backgroundColor: "#0A0A0A",
+  color: "#FFFFFF",
+  borderRadius: "8px",
   border: "none",
-  borderRadius: "4px",
-  fontSize: "0.9rem",
-  fontWeight: "500",
   cursor: "pointer",
   textDecoration: "none",
-  transition: "background-color 0.3s ease",
+  fontWeight: 600,
+  fontSize: "0.95rem",
+  transition: "background-color .2s ease",
 };
+
+/* -------- Responsive tweaks -------- */
+const _ = (() => {
+  // Add a tiny runtime style tag for one responsive rule to match the mock.
+  if (typeof document !== "undefined" && !document.getElementById("projects-page-inline-css")) {
+    const css = `
+      @media (max-width: 860px){
+        .projects-row{ grid-template-columns: 1fr; }
+      }
+    `;
+    const tag = document.createElement("style");
+    tag.id = "projects-page-inline-css";
+    tag.appendChild(document.createTextNode(css));
+    document.head.appendChild(tag);
+  }
+  return null;
+})();
 
 export default ProjectsPage;
