@@ -37,12 +37,15 @@
 /* ───────────── top bar ───────────── */
 .topBar {
   font-size: 0.9rem;
+  margin-right: 3rem;
+  margin-top: 1rem;
   transition: opacity 0.35s ease-in-out;
-  margin-bottom: -8px;
+  margin-bottom: -16px;
 }
 
 .topContainer {
   justify-content: flex-end;
+  
   gap: 1rem;
   padding: 0.2rem 1rem 0 0;
 }
@@ -51,6 +54,7 @@
   display: flex;
   margin-top: 0;
   margin-bottom: 0.5rem;
+  
   align-items: center;
   color: var(--primary-green);
   font-weight: 600;
