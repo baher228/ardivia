@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const LakesideOutdoorKitchenPage: React.FC = () => {
@@ -14,7 +14,7 @@ const LakesideOutdoorKitchenPage: React.FC = () => {
 
   const item = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5} },
   };
 
   const imageFx = {
@@ -28,6 +28,53 @@ const LakesideOutdoorKitchenPage: React.FC = () => {
     "/photos/projects/outdoorKitchen/3.png",
     "/photos/projects/outdoorKitchen/4.png",
   ];
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const showPrev = () => {
+    setCurrentIndex((i) => Math.max(1, i - 1)); // keep within [1, last]
+  };
+
+  const showNext = () => {
+    setCurrentIndex((i) => Math.min(galleryImages.length - 1, i + 1));
+  };
+
+  // Body scroll lock + keyboard controls when lightbox is open
+  useEffect(() => {
+    if (lightboxOpen) {
+      const originalOverflow = document.documentElement.style.overflow;
+      document.documentElement.style.overflow = "hidden";
+
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") showPrev();
+        if (e.key === "ArrowRight") showNext();
+      };
+      window.addEventListener("keydown", onKey);
+
+      // focus close button for accessibility
+      requestAnimationFrame(() => {
+        closeBtnRef.current?.focus();
+      });
+
+      return () => {
+        window.removeEventListener("keydown", onKey);
+        document.documentElement.style.overflow = originalOverflow;
+      };
+    }
+  }, [lightboxOpen]);
 
   return (
     <motion.div
@@ -77,7 +124,7 @@ const LakesideOutdoorKitchenPage: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Hero image */}
+        {/* Hero image — unchanged (kept same size) */}
         <motion.div className="mb-16 overflow-hidden rounded-lg" variants={imageFx}>
           <img
             src={galleryImages[0]}
@@ -153,17 +200,104 @@ const LakesideOutdoorKitchenPage: React.FC = () => {
             <h3 className="text-2xl font-medium text-gray-900 mb-4 mt-10">
               Project Gallery
             </h3>
+
+            {/* Nicer thumbnails (no redirect). Click to open lightbox. */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {galleryImages.slice(1).map((src, i) => (
-                <motion.div key={i} variants={item} className="overflow-hidden rounded-lg">
-                  <img
-                    src={src}
-                    alt={`Lakeside Outdoor Kitchen gallery image ${i + 1}`}
-                    className="w-full h-auto object-cover"
-                  />
-                </motion.div>
+                <motion.button
+                  key={src}
+                  type="button"
+                  variants={imageFx}
+                  onClick={() => openLightbox(i + 1)} // index in original array
+                  className="group relative w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gray-400 rounded-lg"
+                  aria-label={`Open image ${i + 2} in large view`}
+                >
+                  <div className="w-full h-40 md:h-48 rounded-lg overflow-hidden ring-1 ring-gray-200 group-hover:ring-gray-300 transition">
+                    <img
+                      src={src}
+                      alt={`Lakeside Outdoor Kitchen gallery image ${i + 2}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </motion.button>
               ))}
             </div>
+
+            {/* Lightbox overlay */}
+            {lightboxOpen && (
+              <motion.div
+                className="fixed inset-0 z-50 flex items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Image lightbox"
+              >
+                {/* Backdrop */}
+                <div
+                  className="absolute inset-0 bg-black/70"
+                  onClick={closeLightbox}
+                />
+
+                {/* Image container */}
+                <motion.div
+                  className="relative z-10 max-w-[95vw] max-h-[85vh] p-2"
+                  initial={{ scale: 0.98, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <img
+                    src={galleryImages[currentIndex]}
+                    alt={`Lakeside Outdoor Kitchen large image ${currentIndex + 1}`}
+                    className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-lg bg-black/20"
+                  />
+
+                  {/* Close (X) */}
+                  <button
+                    ref={closeBtnRef}
+                    type="button"
+                    onClick={closeLightbox}
+                    aria-label="Close image"
+                    className="absolute -top-3 -right-3 md:top-0 md:right-0 translate-y-[-50%] translate-x-[50%] md:translate-x-0 md:translate-y-0
+                               rounded-full bg-white text-gray-800 p-2 shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+
+                  {/* Left Arrow */}
+                  <button
+                    type="button"
+                    onClick={showPrev}
+                    disabled={currentIndex <= 1}
+                    aria-label="Previous image"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 backdrop-blur p-2 text-gray-800 shadow
+                               hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+
+                  {/* Right Arrow */}
+                  <button
+                    type="button"
+                    onClick={showNext}
+                    disabled={currentIndex >= galleryImages.length - 1}
+                    aria-label="Next image"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/90 backdrop-blur p-2 text-gray-800 shadow
+                               hover:bg-white disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  >
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
           </motion.div>
 
           {/* Right content */}

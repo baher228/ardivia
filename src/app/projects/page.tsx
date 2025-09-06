@@ -50,7 +50,7 @@ const ProjectsPage = () => {
       imageSrc: "/photos/projects/outdoorKitchen/1.png",
       title: "Lakeside Outdoor Kitchen & Fireplace",
       location: "Lake Country, Wisconsin",
-      link: "/place/ourdoor-kitchen",
+      link: "/place/outdoor-kitchen",
       description:
         "A fully equipped stone-and-steel cooking space with a modern brick fireplace, designed for seamless lakeside entertaining.",
       category: "Residential",
