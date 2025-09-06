@@ -7,7 +7,6 @@ interface ServiceCardProps {
   imageSrc: string;
   title: string;
   description: string;
-  // Optional action: if you later add routing, you can pass an onClick handler.
   onAction?: () => void;
 }
 
@@ -37,10 +36,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         "transition-transform duration-500 will-change-transform",
         "hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]",
         isVisible ? "animate-fadeInUp" : "opacity-0 translate-y-4",
+        // Width cap so all tiles line up beautifully (like your reference)
+        "w-full max-w-[560px]",
       ].join(" ")}
+      // allow CSS var usage inside arbitrary Tailwind values
+      style={{} as React.CSSProperties}
     >
-      {/* Image layer */}
-      <div className="relative h-[320px] md:h-[360px] lg:h-[420px]">
+      {/* Image layer with brand tint + gradient */}
+      <div className="relative aspect-[4/3]">
         <Image
           src={imageSrc}
           alt={title}
@@ -50,11 +53,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           className={[
             "object-cover",
             "transition-transform duration-[900ms]",
-            prefersReduced ? "" : "group-hover:scale-105",
+            prefersReduced ? "" : "group-hover:scale-[1.04]",
           ].join(" ")}
         />
+        {/* Brand green tint using CSS var; multiply keeps photography detail */}
+        <div className="absolute inset-0 bg-[var(--primary-green)]/35 mix-blend-multiply pointer-events-none" />
         {/* Soft vignette + bottom gradient for readable text */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent pointer-events-none" />
       </div>
 
       {/* Top-right round action (appears on hover/focus) */}
@@ -66,10 +71,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           className={[
             "pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full",
             "bg-white/90 backdrop-blur ring-1 ring-black/10",
-            "opacity-0 translate-y-[-4px]",
+            "opacity-0 -translate-y-1",
             "transition-all duration-300",
             "group-hover:opacity-100 group-hover:translate-y-0",
-            "focus:opacity-100 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2C5F34] focus:ring-offset-white",
+            "focus:opacity-100 focus:translate-y-0 focus:outline-none",
+            "focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-green)] focus:ring-offset-white",
           ].join(" ")}
         >
           <svg
