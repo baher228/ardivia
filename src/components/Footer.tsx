@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
         {/* Column 1 – Brand */}
         <div className="md:col-span-2 xl:col-span-2 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-neutral-100">
-            ardivia
+            Ardivia
           </h2>
           <p className="text-sm md:text-base 2xl:text-lg leading-relaxed">
             Professional landscaping services creating beautiful outdoor
@@ -160,7 +160,7 @@ const Footer: React.FC = () => {
                      flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
         >
           <p className="text-xs md:text-sm text-neutral-400">
-            © {currentYear} ardivia. All rights reserved.
+            © {currentYear} Ardivia. All rights reserved.
           </p>
           <nav className="flex space-x-6">
             {[
