@@ -57,13 +57,13 @@ const Footer: React.FC = () => {
 
   return (
     <footer
-      className="relative mt-auto text-neutral-300 selection:bg-green-600/40
+      className="relative mt-auto text-neutral-300 selection:bg-green-600/40 
                  before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-700
                  bg-gradient-to-b from-neutral-900 to-neutral-950"
     >
       {/* ---------- Top grid ---------- */}
       <div
-        className="mx-auto max-w-[min(90rem,90%)] px-6 pt-20 pb-12
+        className="mx-auto max-w-[min(90rem,90%)] px-6 pt-20 pb-18
                    grid gap-y-14 gap-x-10 md:grid-cols-4 xl:grid-cols-6"
       >
         {/* Column 1 – Brand */}
@@ -91,8 +91,9 @@ const Footer: React.FC = () => {
             ))}
           </nav>
         </div>
-        {/* Column 4 – Quick links */}
-        <div className="space-y-6">
+
+        {/* Column 4 – Quick links (added bottom padding) */}
+        <div className="space-y-6 pb-20 md:pb-12">
           <h3 className="text-lg font-semibold text-neutral-100">Quick Links</h3>
           <ul className="space-y-3">
             {[
@@ -116,8 +117,8 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Column 2 – Services */}
-        <div className="space-y-6">
+        {/* Column 2 – Services (added bottom padding) */}
+        <div className="space-y-6 pb-20 md:pb-12">
           <h3 className="text-lg font-semibold text-neutral-100">Services</h3>
           <ul className="space-y-3">
             {services.map((s) => (
@@ -149,8 +150,6 @@ const Footer: React.FC = () => {
             ))}
           </ul>
         </div>
-
-        
       </div>
 
       {/* ---------- Bottom bar ---------- */}
