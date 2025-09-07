@@ -41,16 +41,8 @@ const locations = [
 const currentYear = new Date().getFullYear();
 
 const social = [
-  {
-    href: "https://instagram.com/ardivia",
-    label: "Instagram",
-    Icon: Instagram,
-  },
-  {
-    href: "https://linkedin.com/company/ardivia",
-    label: "LinkedIn",
-    Icon: Linkedin,
-  },
+  { href: "https://instagram.com/ardivia", label: "Instagram", Icon: Instagram },
+  { href: "https://linkedin.com/company/ardivia", label: "LinkedIn", Icon: Linkedin },
   { href: "https://facebook.com/ardivia", label: "Facebook", Icon: Facebook },
 ];
 
@@ -103,12 +95,11 @@ const Footer: React.FC = () => {
           {/* Brand + intro */}
           <div className="col-span-12 lg:col-span-5 2xl:col-span-4 space-y-7">
             <h3 className="text-4xl md:text-[2.75rem] font-semibold tracking-wide text-white">
-              Ardivia
+              ardivia
             </h3>
             <p className="text-base md:text-lg leading-relaxed text-emerald-50/90">
-              Professional landscaping services crafting vibrant, enduring
-              gardens. Design, build, and maintenance—tailored to how you live
-              outdoors.
+              Professional landscaping services crafting vibrant, enduring gardens.
+              Design, build, and maintenance—tailored to how you live outdoors.
             </p>
 
             <nav className="flex flex-wrap gap-4">
@@ -133,27 +124,28 @@ const Footer: React.FC = () => {
 
           {/* Services as chips */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-3 space-y-6">
-            <h4 className="text-lg font-semibold text-white">Services</h4>
-            <ul className="space-y-3">
-              {services.map((s) => (
-                <li key={s} className="leading-none">
-                  <Link
-                    href="/services"
-                    className="
-                      inline-flex items-center rounded-full
+  <h4 className="text-lg font-semibold text-white">Services</h4>
+  <ul className="space-y-3">
+    {services.map((s) => (
+      <li key={s} className="leading-none">
+        <Link
+          href="/services"
+          className="
+            inline-flex items-center rounded-full
                       bg-white/8 hover:bg-white/14
                       ring-1 ring-white/15 hover:ring-white/25
                       px-3.5 py-2 text-sm md:text-base text-emerald-50
                       transition
                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white
-                      "
-                  >
-                    {s}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          "
+        >
+          {s}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
 
           {/* Quick links (URLs unchanged) */}
           <div className="col-span-12 sm:col-span-6 lg:col-span-2 space-y-6">
@@ -198,8 +190,7 @@ const Footer: React.FC = () => {
                     <Mail className="h-4 w-4" aria-hidden="true" /> {loc.email}
                   </p>
                   <p className="flex items-start gap-2 text-sm md:text-base text-emerald-50/90">
-                    <MapPin className="h-4 w-4 mt-0.5" aria-hidden="true" />{" "}
-                    {loc.address}
+                    <MapPin className="h-4 w-4 mt-0.5" aria-hidden="true" /> {loc.address}
                   </p>
                 </li>
               ))}
@@ -207,6 +198,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Accreditations / badges row to add tasteful vertical mass */}
+          
         </div>
       </div>
 
@@ -220,7 +212,7 @@ const Footer: React.FC = () => {
           "
         >
           <p className="text-sm md:text-base text-emerald-50/85">
-            © {currentYear} Ardivia. All rights reserved.
+            © {currentYear} ardivia. All rights reserved.
           </p>
           <nav className="flex flex-wrap gap-6">
             {[
