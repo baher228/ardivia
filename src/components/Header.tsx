@@ -17,14 +17,13 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${navOpen ? styles.navOpen : ""}`}>
-
       <div className={styles.mainBar}>
-        <Link href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo} aria-label="ARDIVIA — London">
           <span className={styles.logoText}>{siteConfig.name}</span>
+          <span className={styles.logoSubtext}>London</span>
         </Link>
 
         <nav className={styles.nav} aria-hidden={!navOpen}>
-
           <button
             className={styles.closeNav}
             onClick={closeNav}

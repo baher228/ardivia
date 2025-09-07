@@ -14,7 +14,6 @@
   border: 0;
   margin-left: 3rem;
   margin-right: 3rem;
-  
   padding: 0.7rem 2rem 0;
   display: flex;
   align-items: center;
@@ -23,7 +22,6 @@
 @media (max-width: 1500px){
   .mainBar { margin: 0 2rem; }
 }
-
 
 /* ───────────── nav: ALWAYS off-canvas panel ───────────── */
 .nav {
@@ -45,20 +43,43 @@
 }
 .header.navOpen .nav { right: 0; }
 
+/* ───────────── logo & wordmark ───────────── */
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start; /* keep the block left-aligned in the header */
+  justify-content: center;
+  text-decoration: none;
+  color: black ;
+  line-height: 1;
+}
 
 .logoText {
   font-family: var(--font-display, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial);
   font-weight: 600;
-  font-size: 3rem; 
+  font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   display: block;
+}
+
+.logoSubtext {
+  align-self: center;       /* center under ARDIVIA */
+  margin-top: 0.15rem;
+  font-family: var(--font-display, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial);
+  font-weight: 550;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35rem;
+  opacity: 0.85;
+  text-align: center;
 }
 
 /* ─────── tablet range ─────── */
 @media (min-width: 769px) and (max-width: 1180px) {
   .logo { font-size: 3rem; }
   .logoText { letter-spacing: 0.42rem; }
+  .logoSubtext { font-size: 0.9rem; letter-spacing: 0.32rem; }
 }
 
 /* ─────── mobile — keep the look, just scale down ─────── */
@@ -66,6 +87,7 @@
   .header { padding-top: 1rem; }
   .logo { font-size: 2.4rem; }
   .logoText { letter-spacing: 0.32rem; }
+  .logoSubtext { font-size: 0.85rem; letter-spacing: 0.28rem; }
 }
 
 /* nav links */
@@ -164,8 +186,6 @@
 }
 
 /* ───────────── responsive touch-ups ───────────── */
-
-
 @media (max-width: 768px) {
   .topBar { display: none; }
   .mainBar {
