@@ -8,24 +8,14 @@
               background-color 0.35s ease-in-out;
 }
 
-/* ───────────── shared containers ───────────── */
-.topContainer {
-  max-width: 100%;
-  margin: 0;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  padding: 0 0rem;
-  display: flex;
-  align-items: center;
-}
-
 /* ───────────── main bar ───────────── */
 .mainBar {
   height: 74px;
   border: 0;
   margin-left: 3rem;
   margin-right: 3rem;
-  padding: 0 2rem;
+  
+  padding: 0.7rem 2rem 0;
   display: flex;
   align-items: center;
   transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
@@ -34,43 +24,6 @@
   .mainBar { margin: 0 2rem; }
 }
 
-/* ───────────── top bar ───────────── */
-.topBar {
-  font-size: 0.9rem;
-  margin-right: 3rem;
-  margin-top: 1rem;
-  transition: opacity 0.35s ease-in-out;
-  margin-bottom: -16px;
-}
-
-.topContainer {
-  justify-content: flex-end;
-  
-  gap: 1rem;
-  padding: 0.2rem 1rem 0 0;
-}
-
-.topLink {
-  display: flex;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  
-  align-items: center;
-  color: var(--primary-green);
-  font-weight: 600;
-  text-decoration: none;
-  margin-right: 0rem;
-  transition: color var(--transition-medium);
-}
-
-.topLink:hover { color: #326750; }
-
-.iconCircle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.25rem;
-}
 
 /* ───────────── nav: ALWAYS off-canvas panel ───────────── */
 .nav {
