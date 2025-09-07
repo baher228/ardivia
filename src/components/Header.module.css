@@ -100,7 +100,7 @@
 /* CTA buttons */
 .ctaButton,
 .ctaMobile {
-  background: #004225;
+  background: var(--primary-green);
   color: #fff;
   padding: 0.8rem 1.8rem;
   font-weight: 700;
