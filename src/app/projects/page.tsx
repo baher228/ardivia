@@ -178,7 +178,7 @@ const ProjectsPage = () => {
             whileHover={{
               scale: 1.05,
               boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
-              backgroundColor: "#111",
+              backgroundColor: "var(--primary-green)",
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
@@ -362,7 +362,7 @@ const ctaText: React.CSSProperties = {
 const ctaBtn: React.CSSProperties = {
   display: "inline-block",
   padding: "12px 22px",
-  backgroundColor: "#0A0A0A",
+  backgroundColor:" var(--primary-green)",
   color: "#FFFFFF",
   borderRadius: "8px",
   border: "none",
@@ -370,7 +370,7 @@ const ctaBtn: React.CSSProperties = {
   textDecoration: "none",
   fontWeight: 600,
   fontSize: "0.95rem",
-  transition: "background-color .2s ease",
+  transition: "var(--primary-green) .2s ease",
 };
 
 /* -------- Responsive tweaks -------- */
