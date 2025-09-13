@@ -120,44 +120,48 @@ const ProjectsPage = () => {
           </div>
         </motion.div>
 
-        {/* LIST — like the reference image */}
+        {/* LIST */}
         <div style={list}>
           {filtered.map((p, idx) => (
-            <motion.div
-              key={p.title}
-              initial={{ y: 40, opacity: 0 }}
-              animate={isVisible ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 + idx * 0.05 }}
-            >
-              <Link href={p.link} style={{ textDecoration: "none" }}>
-                <article style={row}>
-                  <div style={thumbWrap}>
-                    <img src={p.imageSrc} alt={p.title} style={thumb} />
-                  </div>
-
-                  <div style={rightCol}>
-                    <h2 style={rowTitle}>{p.title}</h2>
-
-                    <div style={metaGrid}>
-                      <div style={metaBlock}>
-                        <div style={metaLabel}>Year</div>
-                        <div style={metaValue}>{p.year}</div>
-                      </div>
-                      <div style={metaBlock}>
-                        <div style={metaLabel}>Location</div>
-                        <div style={metaValue}>{p.location}</div>
-                      </div>
-                      <div style={metaBlock}>
-                        <div style={metaLabel}>Service</div>
-                        <div style={metaValue}>{p.service}</div>
-                      </div>
+            <React.Fragment key={p.title}>
+              <motion.div
+                initial={{ y: 40, opacity: 0 }}
+                animate={isVisible ? { y: 0, opacity: 1 } : { y: 40, opacity: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 + idx * 0.05 }}
+              >
+                <Link href={p.link} style={{ textDecoration: "none" }}>
+                  <article className="projects-row" style={row}>
+                    <div style={thumbWrap}>
+                      <img src={p.imageSrc} alt={p.title} style={thumb} />
                     </div>
 
-                    {p.description && <p style={desc}>{p.description}</p>}
-                  </div>
-                </article>
-              </Link>
-            </motion.div>
+                    <div style={rightCol}>
+                      <h2 style={rowTitle}>{p.title}</h2>
+
+                      <div style={metaGrid}>
+                        <div style={metaBlock}>
+                          <div style={metaLabel}>Year</div>
+                          <div style={metaValue}>{p.year}</div>
+                        </div>
+                        <div style={metaBlock}>
+                          <div style={metaLabel}>Location</div>
+                          <div style={metaValue}>{p.location}</div>
+                        </div>
+                        <div style={metaBlock}>
+                          <div style={metaLabel}>Service</div>
+                          <div style={metaValue}>{p.service}</div>
+                        </div>
+                      </div>
+
+                      {p.description && <p style={desc}>{p.description}</p>}
+                    </div>
+                  </article>
+                </Link>
+              </motion.div>
+
+              {/* Root primary-green separator between projects */}
+              {idx < filtered.length - 1 && <div style={separator} aria-hidden="true" />}
+            </React.Fragment>
           ))}
         </div>
 
@@ -178,7 +182,7 @@ const ProjectsPage = () => {
             whileHover={{
               scale: 1.05,
               boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
-              backgroundColor: "#111",
+              backgroundColor: "var(--primary-green)",
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
@@ -263,13 +267,13 @@ const list: React.CSSProperties = {
 
 const row: React.CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "360px 1fr",
-  gap: "28px",
+  gridTemplateColumns: "520px 1fr", // ⬅️ larger image column
+  gap: "32px",
   alignItems: "center",
   background: "#F4F6F3",
   border: "1px solid #E5E9E3",
   borderRadius: "16px",
-  padding: "20px",
+  padding: "24px",
 } as const;
 
 const thumbWrap: React.CSSProperties = {
@@ -362,7 +366,7 @@ const ctaText: React.CSSProperties = {
 const ctaBtn: React.CSSProperties = {
   display: "inline-block",
   padding: "12px 22px",
-  backgroundColor: "#0A0A0A",
+  backgroundColor: "var(--primary-green)",
   color: "#FFFFFF",
   borderRadius: "8px",
   border: "none",
@@ -370,7 +374,17 @@ const ctaBtn: React.CSSProperties = {
   textDecoration: "none",
   fontWeight: 600,
   fontSize: "0.95rem",
-  transition: "background-color .2s ease",
+  transition: "all .2s ease",
+};
+
+/* Separator between projects using the root --primary-green */
+const separator: React.CSSProperties = {
+  height: "2px",
+  width: "100%",
+  background: "var(--primary-green)",
+  opacity: 0.65,
+  borderRadius: "2px",
+  margin: "6px 0 16px",
 };
 
 /* -------- Responsive tweaks -------- */
