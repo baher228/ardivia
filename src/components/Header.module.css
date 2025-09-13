@@ -5,7 +5,7 @@
   box-shadow: var(--shadow-light);
   padding-bottom: 0.5rem;
   transition: box-shadow var(--transition-medium),
-              background-color 0.35s ease-in-out;
+    background-color 0.35s ease-in-out;
 }
 
 /* ───────────── shared containers ───────────── */
@@ -30,22 +30,24 @@
   align-items: center;
   transition: height 0.35s ease-in-out, padding 0.35s ease-in-out;
 }
-@media (max-width: 1500px){
-  .mainBar { margin: 0 2rem; }
+@media (max-width: 1500px) {
+  .mainBar {
+    margin: 0 2rem;
+  }
 }
 
 /* ───────────── top bar ───────────── */
 .topBar {
   font-size: 0.9rem;
   margin-right: 3rem;
-  margin-top: 1rem;
+
   transition: opacity 0.35s ease-in-out;
   margin-bottom: -16px;
 }
 
 .topContainer {
   justify-content: flex-end;
-  
+
   gap: 1rem;
   padding: 0.2rem 1rem 0 0;
 }
@@ -54,7 +56,7 @@
   display: flex;
   margin-top: 0;
   margin-bottom: 0.5rem;
-  
+
   align-items: center;
   color: var(--primary-green);
   font-weight: 600;
@@ -63,7 +65,9 @@
   transition: color var(--transition-medium);
 }
 
-.topLink:hover { color: #326750; }
+.topLink:hover {
+  color: #326750;
+}
 
 .iconCircle {
   display: inline-flex;
@@ -90,13 +94,24 @@
   overflow-y: auto;
   z-index: 999; /* sits above page content */
 }
-.header.navOpen .nav { right: 0; }
-
+.header.navOpen .nav {
+  right: 0;
+}
 
 .logoText {
-  font-family: var(--font-display, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial);
+  font-family: var(
+    --font-display,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial
+  );
+  color: black;
   font-weight: 600;
-  font-size: 3rem; 
+  font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   display: block;
@@ -104,15 +119,25 @@
 
 /* ─────── tablet range ─────── */
 @media (min-width: 769px) and (max-width: 1180px) {
-  .logo { font-size: 3rem; }
-  .logoText { letter-spacing: 0.42rem; }
+  .logo {
+    font-size: 3rem;
+  }
+  .logoText {
+    letter-spacing: 0.42rem;
+  }
 }
 
 /* ─────── mobile — keep the look, just scale down ─────── */
 @media (max-width: 768px) {
-  .header { padding-top: 1rem; }
-  .logo { font-size: 2.4rem; }
-  .logoText { letter-spacing: 0.32rem; }
+  .header {
+    padding-top: 1rem;
+  }
+  .logo {
+    font-size: 2.4rem;
+  }
+  .logoText {
+    letter-spacing: 0.32rem;
+  }
 }
 
 /* nav links */
@@ -128,12 +153,16 @@
 .navLink::after {
   content: "";
   position: absolute;
-  bottom: 0; left: 0;
-  height: 2px; width: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
   background: var(--gold);
   transition: width var(--transition-medium);
 }
-.navLink:hover::after { width: 100%; }
+.navLink:hover::after {
+  width: 100%;
+}
 
 /* ───────────── actions ───────────── */
 .actions {
@@ -160,7 +189,9 @@
   line-height: 1;
 }
 /* desktop default: show main CTA; panel CTA toggles below */
-.ctaMobile { display: none; }
+.ctaMobile {
+  display: none;
+}
 .ctaButton:hover,
 .ctaMobile:hover {
   background: #326750;
@@ -170,7 +201,7 @@
 
 /* ───────────── hamburger: ALWAYS visible, ALWAYS 3 lines ───────────── */
 .menuToggle {
-  display: block;           /* was hidden on desktop */
+  display: block; /* was hidden on desktop */
   background: none;
   border: none;
   cursor: pointer;
@@ -215,7 +246,9 @@
   .mainBar {
     height: 68px;
     padding: 0 1rem;
+    margin-top: 0;
   }
+} /*
   .logo {
     font-size: 2.9rem;
     margin-bottom: 0.5rem;
@@ -228,10 +261,12 @@
     padding: 0.6rem 1.2rem;
     font-size: 0.95rem;
   }
-}
+} */
 
 @media (max-width: 768px) {
-  .topBar { display: none; }
+  .topBar {
+    display: none;
+  }
   .mainBar {
     height: 60px;
     padding: 0 1rem;
@@ -247,7 +282,9 @@
     gap: 1rem;
   }
   /* show CTA only inside panel on small screens */
-  .ctaButton { display: none; }
+  .ctaButton {
+    display: none;
+  }
   .header.navOpen .ctaMobile {
     display: inline-block;
     margin-top: 2rem;
