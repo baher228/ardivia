@@ -34,3 +34,6 @@ affera/src/oldworkingnginx.txt
 node_modules
 dist
 new_folder/dist
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
