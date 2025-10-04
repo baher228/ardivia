@@ -25,49 +25,6 @@
   }
 }
 
-<<<<<<< HEAD
-/* ───────────── top bar ───────────── */
-.topBar {
-  font-size: 0.9rem;
-  margin-right: 3rem;
-
-  transition: opacity 0.35s ease-in-out;
-  margin-bottom: -16px;
-}
-
-.topContainer {
-  justify-content: flex-end;
-
-  gap: 1rem;
-  padding: 0.2rem 1rem 0 0;
-}
-
-.topLink {
-  display: flex;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-
-  align-items: center;
-  color: var(--primary-green);
-  font-weight: 600;
-  text-decoration: none;
-  margin-right: 0rem;
-  transition: color var(--transition-medium);
-}
-
-.topLink:hover {
-  color: #326750;
-}
-
-.iconCircle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.25rem;
-}
-
-=======
->>>>>>> 748d54270660a86643b3fc3eb7fb2575422020f2
 /* ───────────── nav: ALWAYS off-canvas panel ───────────── */
 .nav {
   position: fixed;
@@ -86,11 +43,9 @@
   overflow-y: auto;
   z-index: 999; /* sits above page content */
 }
-<<<<<<< HEAD
 .header.navOpen .nav {
   right: 0;
-=======
-.header.navOpen .nav { right: 0; }
+}
 
 /* ───────────── logo & wordmark ───────────── */
 .logo {
@@ -99,9 +54,8 @@
   align-items: flex-start; /* keep the block left-aligned in the header */
   justify-content: center;
   text-decoration: none;
-  color: black ;
+  color: black;
   line-height: 1;
->>>>>>> 748d54270660a86643b3fc3eb7fb2575422020f2
 }
 
 .logoText {
@@ -124,9 +78,18 @@
 }
 
 .logoSubtext {
-  align-self: center;       /* center under ARDIVIA */
+  align-self: center; /* center under ARDIVIA */
   margin-top: 0.15rem;
-  font-family: var(--font-display, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial);
+  font-family: var(
+    --font-display,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial
+  );
   font-weight: 550;
   font-size: 0.95rem;
   text-transform: uppercase;
@@ -137,23 +100,20 @@
 
 /* ─────── tablet range ─────── */
 @media (min-width: 769px) and (max-width: 1180px) {
-<<<<<<< HEAD
   .logo {
     font-size: 3rem;
   }
   .logoText {
     letter-spacing: 0.42rem;
   }
-=======
-  .logo { font-size: 3rem; }
-  .logoText { letter-spacing: 0.42rem; }
-  .logoSubtext { font-size: 0.9rem; letter-spacing: 0.32rem; }
->>>>>>> 748d54270660a86643b3fc3eb7fb2575422020f2
+  .logoSubtext {
+    font-size: 0.9rem;
+    letter-spacing: 0.32rem;
+  }
 }
 
 /* ─────── mobile — keep the look, just scale down ─────── */
 @media (max-width: 768px) {
-<<<<<<< HEAD
   .header {
     padding-top: 1rem;
   }
@@ -163,12 +123,10 @@
   .logoText {
     letter-spacing: 0.32rem;
   }
-=======
-  .header { padding-top: 1rem; }
-  .logo { font-size: 2.4rem; }
-  .logoText { letter-spacing: 0.32rem; }
-  .logoSubtext { font-size: 0.85rem; letter-spacing: 0.28rem; }
->>>>>>> 748d54270660a86643b3fc3eb7fb2575422020f2
+  .logoSubtext {
+    font-size: 0.85rem;
+    letter-spacing: 0.28rem;
+  }
 }
 
 /* nav links */
@@ -273,30 +231,6 @@
 }
 
 /* ───────────── responsive touch-ups ───────────── */
-<<<<<<< HEAD
-@media (min-width: 769px) and (max-width: 1580px) {
-  .mainBar {
-    height: 68px;
-    padding: 0 1rem;
-    margin-top: 0;
-  }
-} /*
-  .logo {
-    font-size: 2.9rem;
-    margin-bottom: 0.5rem;
-  }
-  .actions {
-    gap: 0.75rem;
-    margin-left: 1rem;
-  }
-  .ctaButton {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
-} */
-
-=======
->>>>>>> 748d54270660a86643b3fc3eb7fb2575422020f2
 @media (max-width: 768px) {
   .topBar {
     display: none;
