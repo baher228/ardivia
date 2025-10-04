@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Column 4 – Quick links (added bottom padding) */}
-        <div className="space-y-6 pb-20 md:pb-12">
+        <div className="space-y-6 md:pb-12">
           <h3 className="text-lg font-semibold text-neutral-100">Quick Links</h3>
           <ul className="space-y-3">
             {[
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Column 2 – Services (added bottom padding) */}
-        <div className="space-y-6 pb-20 md:pb-12">
+        <div className="space-y-6 md:pb-12">
           <h3 className="text-lg font-semibold text-neutral-100">Services</h3>
           <ul className="space-y-3">
             {services.map((s) => (

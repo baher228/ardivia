@@ -14,13 +14,19 @@ const CROP_TOP_BOTTOM_PERCENT = 15;
 
 const HeroSection: React.FC = () => {
   const [navHeight, setNavHeight] = useState<number>(0);
+  const [width, setWidth] = useState<number>(0);
 
   useEffect(() => {
-    const update = () => setNavHeight(getNavHeight(window.innerWidth));
+    const update = () => {
+      setNavHeight(getNavHeight(window.innerWidth));
+      setWidth(window.innerWidth);
+    };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
+  const isMobile = width < 860;
 
   const {
     heroStyles,
@@ -67,7 +73,7 @@ const HeroSection: React.FC = () => {
         // Subtle darkening + vertical gradient for readability on bright frames
         background:
           "linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.45))",
-        paddingInline: "2rem",
+        paddingInline: "1rem",
         display: "grid",
         placeItems: "center",
       } as React.CSSProperties,
@@ -75,7 +81,7 @@ const HeroSection: React.FC = () => {
       // Optional soft “glass” container for content to pop on foliage frames
       glassStyles: {
         width: "min(1200px, 100%)",
-        padding: "2.2rem",
+        padding: isMobile ? "1.5rem" : "2.2rem",
         borderRadius: "20px",
         background: "rgba(0,0,0,0.2)",
         backdropFilter: "blur(4px)",
@@ -84,15 +90,15 @@ const HeroSection: React.FC = () => {
 
       twoColumnStyles: {
         display: "grid",
-        gridTemplateColumns: "1fr 1px 1.2fr",
-        gap: "2rem",
+        gridTemplateColumns: isMobile ? "1fr" : "1fr 1px 1.2fr",
+        gap: isMobile ? "1.5rem" : "2rem",
         width: "100%",
         alignItems: "start",
       } as React.CSSProperties,
 
       leftColumnStyles: {
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: isMobile ? "center" : "flex-start",
       } as React.CSSProperties,
 
       logoStyles: {
@@ -153,7 +159,7 @@ const HeroSection: React.FC = () => {
         fontFamily: "var(--font-primary)",
       } as React.CSSProperties,
     };
-  }, [navHeight]);
+  }, [navHeight, isMobile]);
 
   return (
     <motion.section
@@ -172,14 +178,7 @@ const HeroSection: React.FC = () => {
       <div style={overlayStyles}>
         <div style={glassStyles}>
           <div
-            style={{
-              ...twoColumnStyles,
-              // Simple responsive collapse to single column on small screens
-              gridTemplateColumns:
-                typeof window !== "undefined" && window.innerWidth < 860
-                  ? "1fr"
-                  : "1fr 1px 1.2fr",
-            }}
+            style={twoColumnStyles}
           >
             <motion.div
               style={leftColumnStyles}
@@ -191,7 +190,7 @@ const HeroSection: React.FC = () => {
             </motion.div>
 
             {/* Divider (hidden on small screens) */}
-            {typeof window !== "undefined" && window.innerWidth >= 860 ? (
+            {!isMobile ? (
               <div style={lineStyles} />
             ) : null}
 

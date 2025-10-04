@@ -29,6 +29,7 @@
   margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--divider);
+  flex-wrap: wrap;
 }
 
 .title {
@@ -38,6 +39,12 @@
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--on-bg);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
 }
 
 .viewAllLink {
