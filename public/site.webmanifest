@@ -1,0 +1,12 @@
+{
+  "name": "AFFERA London",
+  "short_name": "AFFERA",
+  "description": "AFFERA London — Landscape & Garden Design",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F3929",
+  "theme_color": "#0F3929",
+  "icons": [
+    { "src": "/icons/icon.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
