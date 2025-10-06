@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface SectionCardProps {
   imageSrc: string;
@@ -22,9 +23,10 @@ const SectionCard: React.FC<SectionCardProps> = ({
     <div style={cardStyles}>
       <Link href={link} style={cardLinkStyles}>
         <div style={imageContainerStyles}>
-          <img
+          <Image
             src={imageSrc}
             alt={title}
+            fill
             loading="lazy"
             decoding="async"
             style={imageStyles}

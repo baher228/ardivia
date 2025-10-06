@@ -31,30 +31,6 @@ const AboutPage = () => {
     },
   };
 
-  const teamMembers = [
-    {
-      name: "Chelik",
-      role: "Director of Landscape Architecture",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-      bio: "With over 15 years of experience, Sarah leads our design vision and client relationships.",
-    },
-    {
-      name: "Hren",
-      role: "Urban Design Specialist",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-      bio: "Michael specializes in creating sustainable urban environments that enhance community life.",
-    },
-    {
-      name: "Kto-to",
-      role: "Sustainability Director",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
-      bio: "Emma ensures all our projects meet the highest environmental standards and certifications.",
-    },
-  ];
-
   return (
     <motion.div
       className="min-h-screen bg-white pt-24"

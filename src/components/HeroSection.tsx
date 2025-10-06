@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 const getNavHeight = (width: number): number => {
   if (width < 768) return 60;
@@ -204,7 +205,7 @@ const HeroSection: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.25 }}
             >
-              <h1 style={logoStyles}>ARDIVIA</h1>
+              <h1 style={logoStyles}>{siteConfig.name}</h1>
             </motion.div>
 
             {!isMobile ? <div style={lineStyles} /> : null}

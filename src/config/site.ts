@@ -1,16 +1,16 @@
 export const siteConfig = {
-  name: "ardivia",
+  name: "Affera",
   description: "Professional landscaping services for beautiful outdoor spaces",
-  url: "https://ardivia.com",
-  ogImage: "https://ardivia.com/og.jpg",
+  url: "https://affera.com",
+  ogImage: "https://affera.com/og.jpg",
   links: {
-    twitter: "https://twitter.com/ardivia",
-    facebook: "https://facebook.com/ardivia",
-    instagram: "https://instagram.com/ardivia",
+    twitter: "https://twitter.com/affera",
+    facebook: "https://facebook.com/affera",
+    instagram: "https://instagram.com/affera",
   },
   contact: {
     phone: "+1 (555) 123-4567",
-    email: "hello@ardivia.com",
+    email: "london@affera.com",
     address: "123 Garden Street, Green Valley, CA 90210",
   },
 };

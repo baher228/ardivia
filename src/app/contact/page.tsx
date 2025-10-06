@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 interface FormData {
   name: string;
@@ -27,11 +28,13 @@ const ContactPage = () => {
     setIsVisible(true);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -41,16 +44,18 @@ const ContactPage = () => {
     setSubmitStatus("");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setSubmitStatus("Thank you for your message! We'll get back to you soon.");
+        setSubmitStatus(
+          "Thank you for your message! We'll get back to you soon."
+        );
         setFormData({
           name: "",
           email: "",
@@ -59,10 +64,14 @@ const ContactPage = () => {
           message: "",
         });
       } else {
-        setSubmitStatus("Sorry, there was an error sending your message. Please try again.");
+        setSubmitStatus(
+          "Sorry, there was an error sending your message. Please try again."
+        );
       }
     } catch (error) {
-      setSubmitStatus("Sorry, there was an error sending your message. Please try again.");
+      setSubmitStatus(
+        "Sorry, there was an error sending your message. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -113,7 +122,7 @@ const ContactPage = () => {
               <div style={locationStyles}>
                 <h3 style={locationTitleStyles}>London</h3>
                 <p style={contactTextStyles}>020 7620 1453</p>
-                <p style={contactTextStyles}>london@viterra.com</p>
+                <p style={contactTextStyles}>{siteConfig.contact.email}</p>
                 <p style={addressStyles}>
                   First Floor Studio, The Old School, 4 Exton Street, London SE1
                   8UE
@@ -124,10 +133,16 @@ const ContactPage = () => {
             <div style={infoSectionStyles}>
               <h2 style={sectionTitleStyles}>Connect With Us</h2>
               <div style={socialLinksStyles}>
-                <a href="https://instagram.com/viterra" style={socialLinkStyles}>
+                <a
+                  href="https://instagram.com/viterra"
+                  style={socialLinkStyles}
+                >
                   Instagram
                 </a>
-                <a href="https://linkedin.com/company/viterra" style={socialLinkStyles}>
+                <a
+                  href="https://linkedin.com/company/viterra"
+                  style={socialLinkStyles}
+                >
                   LinkedIn
                 </a>
                 <a href="https://facebook.com/viterra" style={socialLinkStyles}>
@@ -139,7 +154,9 @@ const ContactPage = () => {
             <div style={infoSectionStyles}>
               <h2 style={sectionTitleStyles}>Business Hours</h2>
               <div style={businessHoursStyles}>
-                <p style={contactTextStyles}>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p style={contactTextStyles}>
+                  Monday - Friday: 9:00 AM - 6:00 PM
+                </p>
                 <p style={contactTextStyles}>Saturday: 10:00 AM - 4:00 PM</p>
                 <p style={contactTextStyles}>Sunday: Closed</p>
               </div>
@@ -153,11 +170,11 @@ const ContactPage = () => {
                 <label htmlFor="name" style={labelStyles}>
                   Name *
                 </label>
-                <input 
-                  type="text" 
-                  id="name" 
+                <input
+                  type="text"
+                  id="name"
                   name="name"
-                  style={inputStyles} 
+                  style={inputStyles}
                   required
                   value={formData.name}
                   onChange={handleInputChange}
@@ -168,11 +185,11 @@ const ContactPage = () => {
                 <label htmlFor="email" style={labelStyles}>
                   Email *
                 </label>
-                <input 
-                  type="email" 
-                  id="email" 
+                <input
+                  type="email"
+                  id="email"
                   name="email"
-                  style={inputStyles} 
+                  style={inputStyles}
                   required
                   value={formData.email}
                   onChange={handleInputChange}
@@ -183,9 +200,9 @@ const ContactPage = () => {
                 <label htmlFor="phone" style={labelStyles}>
                   Phone
                 </label>
-                <input 
-                  type="tel" 
-                  id="phone" 
+                <input
+                  type="tel"
+                  id="phone"
                   name="phone"
                   style={inputStyles}
                   value={formData.phone}
@@ -197,11 +214,11 @@ const ContactPage = () => {
                 <label htmlFor="subject" style={labelStyles}>
                   Subject *
                 </label>
-                <input 
-                  type="text" 
-                  id="subject" 
+                <input
+                  type="text"
+                  id="subject"
                   name="subject"
-                  style={inputStyles} 
+                  style={inputStyles}
                   required
                   value={formData.subject}
                   onChange={handleInputChange}
@@ -224,21 +241,19 @@ const ContactPage = () => {
               </div>
 
               {submitStatus && (
-                <div style={statusMessageStyles}>
-                  {submitStatus}
-                </div>
+                <div style={statusMessageStyles}>{submitStatus}</div>
               )}
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 style={{
                   ...submitBtnStyles,
                   opacity: isSubmitting ? 0.7 : 1,
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                  cursor: isSubmitting ? "not-allowed" : "pointer",
                 }}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </motion.div>

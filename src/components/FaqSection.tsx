@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./FaqSection.module.css";
+import { siteConfig } from "@/config/site";
 
 /* ---------- DATA  ---------- */
 const faqs = [
@@ -9,7 +10,7 @@ const faqs = [
     category: "Getting Started",
     questions: [
       {
-        question: "What is the process of working with Viterra?",
+        question: `What is the process of working with ${siteConfig.name}?`,
         answer:
           "Our process begins with an initial consultation to discuss your vision and requirements. We then move to the design phase, where we create detailed plans and 3D visualizations. Once the design is approved, our team begins construction and planting. We finish with a final walkthrough to ensure your complete satisfaction.",
       },

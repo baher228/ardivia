@@ -14,7 +14,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   imageSrc,
   title,
   description,
-  onAction,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const prefersReduced =

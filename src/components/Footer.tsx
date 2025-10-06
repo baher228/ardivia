@@ -3,12 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Instagram,
-  Linkedin,
-  Facebook,
-  ChevronUp,
-} from "lucide-react";
+import { Instagram, Linkedin, Facebook, ChevronUp } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 // ────────────────────────────────────────────────────────────────────────────────
 // Data
@@ -26,7 +22,7 @@ const locations = [
   {
     city: "London",
     phone: "020 7620 1453",
-    email: "london@ardivia.com",
+    email: siteConfig.contact.email,
     address:
       "First Floor Studio, The Old School, 4 Exton Street, London SE1 8UE",
   },
@@ -38,8 +34,16 @@ const locations = [
 const currentYear = new Date().getFullYear();
 
 const social = [
-  { href: "https://instagram.com/ardivia", label: "Instagram", Icon: Instagram },
-  { href: "https://linkedin.com/company/ardivia", label: "LinkedIn", Icon: Linkedin },
+  {
+    href: "https://instagram.com/ardivia",
+    label: "Instagram",
+    Icon: Instagram,
+  },
+  {
+    href: "https://linkedin.com/company/ardivia",
+    label: "LinkedIn",
+    Icon: Linkedin,
+  },
   { href: "https://facebook.com/ardivia", label: "Facebook", Icon: Facebook },
 ];
 
@@ -61,19 +65,17 @@ const Footer: React.FC = () => {
                  before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-700
                  bg-gradient-to-b from-neutral-900 to-neutral-950"
     >
-      {/* ---------- Top grid ---------- */}
       <div
         className="mx-auto max-w-[min(90rem,90%)] px-6 pt-20 pb-18
                    grid gap-y-14 gap-x-10 md:grid-cols-4 xl:grid-cols-6"
       >
-        {/* Column 1 – Brand */}
         <div className="md:col-span-2 xl:col-span-2 space-y-6">
           <h2 className="text-2xl font-semibold tracking-wide text-neutral-100">
-            Ardivia
+            {siteConfig.name}
           </h2>
           <p className="text-sm md:text-base 2xl:text-lg leading-relaxed">
-            Professional landscaping services creating beautiful outdoor
-            spaces.<br className="hidden sm:inline" /> From garden design to
+            Professional landscaping services creating beautiful outdoor spaces.
+            <br className="hidden sm:inline" /> From garden design to
             maintenance, we bring your vision to life.
           </p>
           <nav className="flex space-x-6">
@@ -92,9 +94,10 @@ const Footer: React.FC = () => {
           </nav>
         </div>
 
-        {/* Column 4 – Quick links (added bottom padding) */}
         <div className="space-y-6 md:pb-12">
-          <h3 className="text-lg font-semibold text-neutral-100">Quick Links</h3>
+          <h3 className="text-lg font-semibold text-neutral-100">
+            Quick Links
+          </h3>
           <ul className="space-y-3">
             {[
               ["About Us", "/about"],
@@ -117,7 +120,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Column 2 – Services (added bottom padding) */}
         <div className="space-y-6 md:pb-12">
           <h3 className="text-lg font-semibold text-neutral-100">Services</h3>
           <ul className="space-y-3">
@@ -136,7 +138,6 @@ const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Column 3 – Locations */}
         <div className="space-y-6 xl:col-span-2">
           <h3 className="text-lg font-semibold text-neutral-100">Locations</h3>
           <ul className="space-y-8">
@@ -152,14 +153,13 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* ---------- Bottom bar ---------- */}
       <div className="border-t border-neutral-800">
         <div
           className="mx-auto max-w-[min(90rem,90%)] px-6 py-6
                      flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
         >
           <p className="text-xs md:text-sm text-neutral-400">
-            © {currentYear} Ardivia. All rights reserved.
+            © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
           <nav className="flex space-x-6">
             {[
@@ -181,7 +181,6 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* ---------- FAB ---------- */}
       <AnimatePresence>
         {showFab && (
           <motion.button
