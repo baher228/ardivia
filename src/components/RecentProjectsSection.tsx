@@ -12,7 +12,7 @@ interface ProjectItem {
 const RecentProjectsSection: React.FC = () => {
   const projectItems: ProjectItem[] = [
     {
-      imageSrc: "/photos/projects/NovorizhskyResidence/1.jpg",
+      imageSrc: "/photos/projects/novorizhskyResidence/1.jpg",
       title: "Novorizhsky Residence Garden",
       location: "Moscow",
       link: "/place/novorizhsky-residence",
@@ -38,7 +38,9 @@ const RecentProjectsSection: React.FC = () => {
           </h2>
           <a href="/projects" className={styles.viewAllLink}>
             <span className={styles.viewAllText}>View all places</span>
-            <span aria-hidden="true" className={styles.viewAllArrow}>→</span>
+            <span aria-hidden="true" className={styles.viewAllArrow}>
+              →
+            </span>
           </a>
         </div>
 
@@ -49,12 +51,14 @@ const RecentProjectsSection: React.FC = () => {
               className={styles.projectItem}
               style={{ animationDelay: `${index * 80}ms` }}
             >
-              <SectionCard
-                imageSrc={item.imageSrc}
-                title={item.title}
-                subtitle={item.location}
-                link={item.link}
-              />
+              <div className={styles.itemInner}>
+                <SectionCard
+                  imageSrc={item.imageSrc}
+                  title={item.title}
+                  subtitle={item.location}
+                  link={item.link}
+                />
+              </div>
             </div>
           ))}
         </div>

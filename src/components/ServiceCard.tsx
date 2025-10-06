@@ -62,39 +62,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent pointer-events-none" />
       </div>
 
-      {/* Top-right round action (appears on hover/focus) */}
-      <div className="pointer-events-none absolute right-4 top-4 z-10">
-        <button
-          type="button"
-          onClick={onAction}
-          aria-label={`Open ${title}`}
-          className={[
-            "pointer-events-auto inline-flex h-10 w-10 items-center justify-center rounded-full",
-            "bg-white/90 backdrop-blur ring-1 ring-black/10",
-            "opacity-0 -translate-y-1",
-            "transition-all duration-300",
-            "group-hover:opacity-100 group-hover:translate-y-0",
-            "focus:opacity-100 focus:translate-y-0 focus:outline-none",
-            "focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-green)] focus:ring-offset-white",
-          ].join(" ")}
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1f2937"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M7 17L17 7" />
-            <path d="M8 7h9v9" />
-          </svg>
-        </button>
-      </div>
-
       {/* Bottom-left copy overlay */}
       <div className="absolute inset-x-0 bottom-0 z-10 p-6 md:p-7">
         <h3 className="text-white text-2xl md:text-[28px] font-semibold tracking-tight drop-shadow">
