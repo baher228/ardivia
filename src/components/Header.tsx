@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./Header.module.css";
 import { siteConfig } from "../config/site";
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
+  const pathname = usePathname();
 
   /* ─── lock page when menu is open ─── */
   useEffect(() => {
@@ -14,6 +16,10 @@ export default function Header() {
   }, [navOpen]);
 
   const closeNav = () => setNavOpen(false);
+
+  useEffect(() => {
+    closeNav();
+  }, [pathname]);
 
   return (
     <header className={`${styles.header} ${navOpen ? styles.navOpen : ""}`}>
@@ -32,16 +38,16 @@ export default function Header() {
             ×
           </button>
 
-          <Link href="/about" className={styles.navLink} onClick={closeNav}>
+          <Link href="/about" className={styles.navLink}>
             About
           </Link>
-          <Link href="/services" className={styles.navLink} onClick={closeNav}>
+          <Link href="/services" className={styles.navLink}>
             Services
           </Link>
-          <Link href="/projects" className={styles.navLink} onClick={closeNav}>
+          <Link href="/projects" className={styles.navLink}>
             Projects
           </Link>
-          <Link href="/contact" className={styles.navLink} onClick={closeNav}>
+          <Link href="/contact" className={styles.navLink}>
             Contact
           </Link>
 

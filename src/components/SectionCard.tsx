@@ -36,9 +36,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
           />
           <div style={overlayStyles} aria-hidden="true" />
           <div style={textWrapStyles}>
-            {category ? (
-              <p style={categoryStyles}>{category}</p>
-            ) : null}
+            {category ? <p style={categoryStyles}>{category}</p> : null}
             <h3 style={titleStyles}>{title}</h3>
             {subtitle ? <p style={subtitleStyles}>{subtitle}</p> : null}
           </div>
@@ -62,11 +60,12 @@ const cardLinkStyles: React.CSSProperties = {
   color: "inherit",
 };
 
-/* SQUARE media area */
+/* Adaptive media area: fluid aspect ratio for nicer tablet sizing */
 const imageContainerStyles: React.CSSProperties = {
   position: "relative",
   width: "100%",
-  paddingBottom: "70%", // 1:1 square
+  // from ~60% on wide screens up to ~75% on narrow
+  paddingBottom: "clamp(60%, 68vw, 75%)",
   overflow: "hidden",
   borderRadius: 16,
 };
